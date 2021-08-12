@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aisraely <aisraely@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/11 18:26:48 by aisraely          #+#    #+#             */
+/*   Updated: 2021/08/11 18:26:49 by aisraely         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -31,6 +43,7 @@ int	main(int argc, char **argv)
 				}
 				while (std::getline(infile, buffer))
 					std::cout << buffer << std::endl;
+				infile.close();
 			}
 			i++;
 		}
