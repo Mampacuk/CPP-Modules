@@ -1,24 +1,53 @@
 #!/bin/bash
 
-printf "Simple Tests\n"
-printf "Test00: \"( 18.18 + 3.03 ) * 2\"\n"
+printf "Compiling eval_expr...\n"
+printf "make\n"
+make
+
+printf "\nSimple Tests\n"
+
+printf "\nTest00: \"( 18.18 + 3.03 ) * 2\"\n"
+printf "./eval_expr \"( 18.18 + 3.03 ) * 2\"\n"
 ./eval_expr "( 18.18 + 3.03 ) * 2"
-printf "Test01: \"( 5 + 6 ) * 1\"\n"
+
+printf "\nTest01: \"( 5 + 6 ) * 1\"\n"
+printf "./eval_expr \"( 5 + 6 ) * 1\"\n"
 ./eval_expr "( 5 + 6 ) * 1"
-printf "Test02: \"1 + 2 + 3 + 4 + 5\"\n"
+
+printf "\nTest02: \"1 + 2 + 3 + 4 + 5\"\n"
+printf "./eval_expr \"1 + 2 + 3 + 4 + 5\"\n"
 ./eval_expr "1 + 2 + 3 + 4 + 5"
-printf "Test03: \"2 / 1\"\n"
+
+printf "\nTest03: \"2 / 1\"\n"
+printf "./eval_expr \"2 / 1\"\n"
 ./eval_expr "2 / 1"
-printf "Test04: \"(1 + 2) * (3 + 4)\"\n"
+
+printf "\nTest04: \"(1 + 2) * (3 + 4)\"\n"
+printf "./eval_expr \"(1 + 2) * (3 + 4)\"\n"
 ./eval_expr "(1 + 2) * (3 + 4)"
-printf "False Tests\n"
-printf "Test05: \"(1 + 2) * ((3 + 4)\"\n"
+
+printf "\nTest05: \"-1 + 2\"\n"
+printf "./eval_expr \"-1 + 2\"\n"
+./eval_expr "-1 + 2"
+
+printf "\nFalse Tests\n"
+
+printf "\nTest05: \"(1 + 2) * ((3 + 4)\"\n"
+printf "./eval_expr \"(1 + 2) * ((3 + 4)\"\n"
 ./eval_expr "(1 + 2) * ((3 + 4)"
-printf "Test06: \"1\"\n"
+
+printf "\nTest06: \"1\"\n"
+printf "./eval_expr \"1\"\n"
 ./eval_expr "1"
-printf "Test07: \")\"\n"
+
+printf "\nTest07: \")\"\n"
+printf "./eval_expr \")\"\n"
 ./eval_expr ")"
-printf "Test08: \"(\"\n"
+
+printf "\nTest08: \"(\"\n"
+printf "./eval_expr \"()\"\n"
 ./eval_expr "()"
-printf "Test09: \"4 + b\"\n"
+
+printf "\nTest09: \"4 + b\"\n"
+printf "./eval_expr \"4 + b\"\n"
 ./eval_expr "4 + b"

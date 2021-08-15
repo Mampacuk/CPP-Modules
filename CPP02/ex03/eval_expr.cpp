@@ -30,7 +30,7 @@ int	ft_evaluate_expression(void)
 		{
 			if (subexpr[j] == '+')
 				operation = '+';
-			else if (subexpr[j] == '-')
+			else if (subexpr.find(" - ") != -1)
 				operation = '-';
 			else if (subexpr[j] == '*')
 				operation = '*';
@@ -42,7 +42,7 @@ int	ft_evaluate_expression(void)
 		else
 		{
 			if (subexpr[j] == '+'
-				|| subexpr[j] == '-'
+				|| subexpr.find(" - ") != -1
 				|| subexpr[j] == '*'
 				|| subexpr[j] == '/')
 			reiterate = true;
@@ -58,9 +58,9 @@ int	ft_evaluate_expression(void)
 	// getting first operand
 	while (j < subexpr.size())
 	{
-		if (std::isdigit(subexpr[j]))
+		if (std::isdigit(subexpr[j]) || subexpr[j] == '-')
 			break ;
-		else if (!std::isspace(subexpr[j]))
+		else if (!(std::isspace(subexpr[j]) || subexpr[j] == '-'))
 		{
 			std::cout << "[eval_expr] Invalid input (LHS parsing)." << std::endl;
 			return (1);
@@ -69,13 +69,13 @@ int	ft_evaluate_expression(void)
 	}
 	arg = atof(subexpr.substr(j).c_str());
 	lhs = Fixed(arg);
-	while (std::isdigit(subexpr[j]) || subexpr[j] == '.')
+	while (std::isdigit(subexpr[j]) || subexpr[j] == '.' || subexpr[j] == '-')
 		j++;
 	while (j < subexpr.size())
 	{
-		if (std::isdigit(subexpr[j]))
+		if (std::isdigit(subexpr[j]) || subexpr[j] == '-')
 			break ;
-		else if (!std::isspace(subexpr[j]))
+		else if (!(std::isspace(subexpr[j]) || subexpr[j] == '-'))
 		{
 			std::cout << "[eval_expr] Invalid input (RHS parsing)." << std::endl;
 			return (1);
@@ -99,7 +99,7 @@ int	ft_evaluate_expression(void)
 		lhs = lhs / rhs;
 	if (reiterate == true)
 	{
-		while (std::isdigit(subexpr[j]) || subexpr[j] == '.')
+		while (std::isdigit(subexpr[j]) || subexpr[j] == '.' || subexpr[j] == '-')
 			j++;
 		subexpr = lhs.toString().append(subexpr.substr(j));
 		if (ft_evaluate_expression())
