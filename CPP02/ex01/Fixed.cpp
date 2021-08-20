@@ -6,7 +6,7 @@
 /*   By: aisraely <aisraely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 18:24:18 by aisraely          #+#    #+#             */
-/*   Updated: 2021/08/11 18:24:19 by aisraely         ###   ########.fr       */
+/*   Updated: 2021/08/16 16:20:51 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ float	Fixed::toFloat(void) const
 
 std::ostream	&operator<<(std::ostream &o, const Fixed &f)
 {
-	std::cout << f.toFloat();
+	o << f.toFloat();
 	return (o);
 }

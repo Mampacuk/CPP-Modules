@@ -158,6 +158,6 @@ float	Fixed::toFloat(void) const
 
 std::ostream	&operator<<(std::ostream &o, const Fixed &f)
 {
-	std::cout << f.toFloat();
+	o << f.toFloat();
 	return (o);
 }
