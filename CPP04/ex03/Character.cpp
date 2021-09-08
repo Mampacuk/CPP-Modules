@@ -42,6 +42,7 @@ Character	&Character::operator=(const Character &rhs)
 	int	i;
 
 	i = 0;
+	std::cout << "ENTERED ASSIGNING" << std::endl;
 	if (this->_size > 0)
 	{
 		while (i < this->_size)
@@ -80,7 +81,7 @@ void	Character::equip(AMateria *m)
 	if (!this->_size)
 	{
 		copy = new AMateria*[1];
-		copy[0] = m;
+		copy[0] = m->clone();
 		this->_inventory = copy;
 	}
 	else
@@ -92,7 +93,7 @@ void	Character::equip(AMateria *m)
 			copy[i] = this->_inventory[i];
 			i++;
 		}
-		copy[i] = m;
+		copy[i] = m->clone();
 		delete [] this->_inventory;
 		this->_inventory = copy;
 	}
@@ -131,4 +132,11 @@ void	Character::use(int idx, ICharacter& target)
 const std::string	&Character::getName(void) const
 {
 	return (this->_name);
+}
+
+AMateria	*Character::getItem(int idx) const
+{
+	if (idx >= 0 && idx < this->_size)
+		return (this->_inventory[idx]);
+	return (NULL);
 }

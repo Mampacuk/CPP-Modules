@@ -10,6 +10,11 @@ Cure::Cure(const Cure &copy) : AMateria(copy)
 
 }
 
+Cure::~Cure(void)
+{
+	
+}
+
 Cure	*Cure::clone(void) const
 {
 	return (new Cure(*this));

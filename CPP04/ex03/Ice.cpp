@@ -10,6 +10,11 @@ Ice::Ice(const Ice &copy) : AMateria(copy)
 
 }
 
+Ice::~Ice(void)
+{
+	
+}
+
 Ice	*Ice::clone(void) const
 {
 	return (new Ice(*this));

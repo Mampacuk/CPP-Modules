@@ -16,12 +16,13 @@ class Character : public ICharacter
 		Character(const std::string &name);
 		Character(const Character &copy);
 		Character					&operator=(const Character &rhs);
-		virtual const std::string	&getName(void)	const;
+		virtual const std::string	&getName(void)			const;
 		virtual void				equip(AMateria *m);
 		virtual void				unequip(int idx);
 		virtual void				use(int idx, ICharacter& target);
-		int							getCount(void) const;
-		AMateria					**getInventory(void) const;
+		int							getCount(void)			const;
+		AMateria					**getInventory(void)	const;
+		AMateria					*getItem(int idx)		const;
 };
 
 #endif

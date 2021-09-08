@@ -6,13 +6,13 @@ AWeapon::AWeapon(void)
 }
 
 AWeapon::AWeapon(std::string const &name, int apcost, int damage) : _name(name),
-												_apcost(apcost), _damage(damage)
+												_damage(damage), _apcost(apcost)
 {
 
 }
 
-AWeapon::AWeapon(const AWeapon &copy) : _name(copy._name), _apcost(copy._apcost),
-										_damage(copy._damage)
+AWeapon::AWeapon(const AWeapon &copy) : _name(copy._name), _damage(copy._damage),
+										_apcost(copy._apcost)
 {
 
 }
