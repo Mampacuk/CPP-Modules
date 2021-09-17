@@ -18,11 +18,4 @@ class	AsteroKreog : public IAsteroid
 		virtual std::string		beMinedByStripMiner(StripMiner *strip_one)		const;
 };
 
-R:7        W:8
-HEREDOC PIPE
-
-in:0     R:7  PIPE1 W:4         R:5 PIPE2  W:6       out:1
- \     /  				\     /					\   /
-  cmd1                    cmd2 					cmd3
-
 #endif
