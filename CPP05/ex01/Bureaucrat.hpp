@@ -4,6 +4,8 @@
 # include <string>
 # include <iostream>
 
+class	Form;
+
 class	Bureaucrat
 {
 	public:
@@ -12,11 +14,14 @@ class	Bureaucrat
 		~Bureaucrat(void);
 		Bureaucrat(const Bureaucrat &copy);
 		Bureaucrat	&operator=(const Bureaucrat &rhs);
-		const std::string	&getName(void)	const;
-		int					getGrade(void)	const;
+		const std::string	&getName(void)			const;
+		int					getGrade(void)			const;
+		void				signForm(Form &form)	const;
 		void				promote(void);
 		void				demote(void);
 	private:
+		const std::string	_name;
+		int					_grade;
 		class	GradeTooHighException : public std::exception
 		{
 			public:
@@ -33,8 +38,6 @@ class	Bureaucrat
 					return ("The grade is lower than the minimum possible grade (150).");
 				}
 		};
-		const std::string	&_name;
-		int					_grade;
 };
 
 std::ostream	&operator<<(std::ostream &o, const Bureaucrat &b);

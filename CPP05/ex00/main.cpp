@@ -11,8 +11,22 @@ int	main(void)
 	std::cout << Morgan << " appeared!" << std::endl;
 	Bureaucrat	Hermes(name2, 34);
 	std::cout << Hermes << " appeared!" << std::endl;
-	Bureaucrat	Monster(name3, 0);
-	Bureaucrat	Vogel(name4, 151);
+	try
+	{
+		Bureaucrat	Monster(name3, 0);
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	try
+	{
+		Bureaucrat	Vogel(name4, 151);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 	Bureaucrat	noname;
 	std::cout << noname << " appeared!" << std::endl;
 	Hermes.promote();
