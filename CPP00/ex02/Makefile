@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aisraely <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/08/05 15:50:50 by aisraely          #+#    #+#              #
-#    Updated: 2021/10/30 21:03:23 by aisraely         ###   ########.fr        #
+#    Created: 2021/10/30 21:05:50 by aisraely          #+#    #+#              #
+#    Updated: 2021/10/30 21:06:17 by aisraely         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= myphonebook
+NAME	= jobofmydreams
 
-SRCS	= Contact.cpp PhoneBook.cpp main.cpp
+SRCS	= Account.class.cpp tests.cpp
 OBJS	= ${SRCS:.cpp=.o}
 CC		= c++
 CFLAGS	= -Wall -Wextra -Werror
