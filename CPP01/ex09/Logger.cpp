@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   Logger.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aisraely <aisraely@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 18:26:39 by aisraely          #+#    #+#             */
-/*   Updated: 2021/08/11 18:26:40 by aisraely         ###   ########.fr       */
+/*   Updated: 2021/10/31 16:27:56 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Logger.hpp"
 
-Logger::Logger(std::string _filename) : _filename(_filename)
+Logger::Logger(const std::string &_filename)
 {
-
+	this->_filename = _filename;
 }
 
-std::string	Logger::makeLogEntry(std::string message)
+std::string	Logger::makeLogEntry(const std::string &message) const
 {
 	time_t		now;
 	char		*timestamp;
@@ -31,13 +31,13 @@ std::string	Logger::makeLogEntry(std::string message)
 	return (entry);
 }
 
-void	Logger::logToConsole(std::string message)
+void	Logger::logToConsole(const std::string &message) const
 {
 	std::cout << this->makeLogEntry(message);
 	std::cout << std::endl;
 }
 
-void	Logger::logToFile(std::string message)
+void	Logger::logToFile(const std::string &message) const
 {
 	std::ofstream	ofs;
 
@@ -49,7 +49,7 @@ void	Logger::logToFile(std::string message)
 
 void	Logger::log(std::string const &dest, std::string const &message)
 {
-	void (Logger::*actions[])(std::string) =
+	void (Logger::*actions[])(const std::string&) const =
 	{
 		&Logger::logToConsole,
 		&Logger::logToFile

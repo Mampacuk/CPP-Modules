@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aisraely <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/10/30 21:05:50 by aisraely          #+#    #+#              #
-#    Updated: 2021/10/31 14:48:10 by aisraely         ###   ########.fr        #
+#    Created: 2021/10/31 16:39:54 by aisraely          #+#    #+#              #
+#    Updated: 2021/10/31 16:39:59 by aisraely         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= job_of_my_dreams
+NAME	= fixed
 
-SRCS	= Account.cpp tests.cpp
+SRCS	= ${wildcard *.cpp}
 OBJS	= ${SRCS:.cpp=.o}
 CC		= c++
 CFLAGS	= -Wall -Wextra -Werror

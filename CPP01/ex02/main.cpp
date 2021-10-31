@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aisraely <aisraely@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 18:25:33 by aisraely          #+#    #+#             */
-/*   Updated: 2021/08/11 18:25:34 by aisraely         ###   ########.fr       */
+/*   Updated: 2021/10/31 15:15:38 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,13 @@ int	main(void)
 	bridewitch = event.newZombie("Nora");
 	delete bridewitch;
 
+	survivor1 = event.randomChump();
+	survivor2 = event.randomChump();
+
 	event.setZombieType(boomer.get_type());
 	boomette = event.newZombie("Lia");
 	delete boomette;
 
-	survivor1 = event.randomChump();
-	survivor2 = event.randomChump();
 	survivor3 = event.randomChump();
 	survivor4 = event.randomChump();
 	delete survivor4;

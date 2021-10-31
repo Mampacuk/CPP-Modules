@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Logger.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aisraely <aisraely@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 18:26:45 by aisraely          #+#    #+#             */
-/*   Updated: 2021/08/11 18:26:47 by aisraely         ###   ########.fr       */
+/*   Updated: 2021/10/31 16:21:57 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@
 class	Logger
 {
 	public:
-		Logger(std::string _filename);
+		Logger(const std::string &_filename);
 		void		log(std::string const &dest, std::string const &message);
 	private:
 		std::string	_filename;
-		void		logToConsole(std::string message);
-		void		logToFile(std::string message);
-		std::string	makeLogEntry(std::string message);
+		void		logToConsole(const std::string &message)	const;
+		void		logToFile(const std::string &message)		const;
+		std::string	makeLogEntry(const std::string &message)	const;
 };
 
 #endif

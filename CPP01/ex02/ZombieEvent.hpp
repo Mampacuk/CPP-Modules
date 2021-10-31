@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ZombieEvent.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aisraely <aisraely@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 18:25:48 by aisraely          #+#    #+#             */
-/*   Updated: 2021/08/11 18:25:49 by aisraely         ###   ########.fr       */
+/*   Updated: 2021/10/31 15:09:32 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 class	ZombieEvent
 {
 	public:
-		void	setZombieType(std::string _type);
-		Zombie	*newZombie(std::string name)	const;
-		Zombie	*randomChump(void)				const;
+		void	setZombieType(const std::string &_type);
+		Zombie	*newZombie(const std::string &name)	const;
+		Zombie	*randomChump(void)					const;
 	private:
 		std::string			_type;
 		static std::string	_namepool[8];

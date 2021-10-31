@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Human.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aisraely <aisraely@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 18:26:02 by aisraely          #+#    #+#             */
-/*   Updated: 2021/08/11 18:26:03 by aisraely         ###   ########.fr       */
+/*   Updated: 2021/10/31 16:04:38 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,5 @@ std::string	Human::identify(void) const
 
 const Brain	&Human::getBrain(void) const
 {
-	const Brain	&brain = this->_brain;
-
-	return (brain);
+	return (this->_brain);
 }

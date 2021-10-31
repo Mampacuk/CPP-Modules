@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/31 17:03:50 by aisraely          #+#    #+#             */
+/*   Updated: 2021/10/31 17:03:51 by aisraely         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Fixed.hpp"
 
 Fixed::Fixed(const int num)
@@ -98,10 +110,7 @@ Fixed	Fixed::operator*(const Fixed &rhs) const
 Fixed	Fixed::operator/(const Fixed &rhs) const
 {
 	if (rhs.getRawBits() == 0)
-	{
-		std::cout << "exception: division by zero" << std::endl;
-		return (Fixed(0));
-	}
+		throw std::logic_error("Division by zero");
 	return (Fixed(this->toFloat() / rhs.toFloat()));
 }
 
@@ -118,6 +127,19 @@ Fixed	Fixed::operator++(int)
 	return (copy);
 }
 
+Fixed	&Fixed::operator--(void)
+{
+	this->setRawBits(this->getRawBits() - 1);
+	return (*this);
+}
+
+Fixed	Fixed::operator--(int)
+{
+	Fixed	copy(*this);
+	this->setRawBits(this->getRawBits() - 1);
+	return (copy);
+}
+
 Fixed	&Fixed::min(Fixed &lhs, Fixed &rhs)
 {
 	if (rhs < lhs)
@@ -125,7 +147,7 @@ Fixed	&Fixed::min(Fixed &lhs, Fixed &rhs)
 	return (lhs);
 }
 
-Fixed	Fixed::min(const Fixed &lhs, const Fixed &rhs)
+const Fixed	&Fixed::min(const Fixed &lhs, const Fixed &rhs)
 {
 	if (rhs < lhs)
 		return (rhs);
@@ -139,7 +161,7 @@ Fixed	&Fixed::max(Fixed &lhs, Fixed &rhs)
 	return (lhs);
 }
 
-Fixed	Fixed::max(const Fixed &lhs, const Fixed &rhs)
+const Fixed	&Fixed::max(const Fixed &lhs, const Fixed &rhs)
 {
 	if (rhs > lhs)
 		return (rhs);
@@ -154,14 +176,6 @@ int	Fixed::toInt(void) const
 float	Fixed::toFloat(void) const
 {
 	return (this->_value / (float)(1 << this->_point));
-}
-
-std::string	Fixed::toString(void) const
-{
-	std::ostringstream	oss;
-
-	oss << this->toFloat();
-	return (oss.str());
 }
 
 std::ostream	&operator<<(std::ostream &o, const Fixed &f)

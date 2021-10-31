@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ZombieHorde.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aisraely <aisraely@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 18:25:55 by aisraely          #+#    #+#             */
-/*   Updated: 2021/08/11 18:25:56 by aisraely         ###   ########.fr       */
+/*   Updated: 2021/10/31 16:00:44 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@
 class	ZombieHorde
 {
 	public:
-		ZombieHorde(int n);
+		ZombieHorde(int _n);
 		~ZombieHorde(void);
 	private:
-		int					n;
-		Zombie				*zombies;
+		Zombie				*_zombies;
 		static std::string	_namepool[8];
 		static std::string	_typepool[8];
 };

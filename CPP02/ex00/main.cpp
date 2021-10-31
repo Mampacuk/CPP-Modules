@@ -5,28 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 18:24:36 by aisraely          #+#    #+#             */
-/*   Updated: 2021/10/31 15:04:08 by aisraely         ###   ########.fr       */
+/*   Created: 2021/10/31 16:40:07 by aisraely          #+#    #+#             */
+/*   Updated: 2021/10/31 16:41:27 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Pony.hpp"
+#include "Fixed.hpp"
+#include <iostream>
 
-void	ponyOnTheHeap(void)
-{
-	Pony	*heappony;
+int main( void ) {
 
-	heappony = new Pony("Lisa", 5);
-	delete heappony;
-}
-
-void	ponyOnTheStack(void)
-{
-	Pony	stackpony("Beanie", 7);
-}
-
-int	main(void)
-{
-	ponyOnTheHeap();
-	ponyOnTheStack();
+	Fixed a;
+	Fixed b( a );
+	Fixed c;
+	
+	c = b;
+	
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+	
+	return 0;
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aisraely <aisraely@student.42.fr>          +#+  +:+       +#+         #
+#    By: aisraely <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/11 18:26:50 by aisraely          #+#    #+#              #
-#    Updated: 2021/08/11 18:26:51 by aisraely         ###   ########.fr        #
+#    Updated: 2021/10/31 16:39:14 by aisraely         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,14 +14,17 @@ NAME	= cato9tails
 
 SRCS	= ${wildcard *.cpp}
 OBJS	= ${SRCS:.cpp=.o}
-CC		= clang++
+CC		= c++
 CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -rf
 
 all: ${NAME}
 
+.cpp.o:
+	@$(CC) $(CFLAGS) -c $< -o $(<:.cpp=.o)
+
 ${NAME}: ${OBJS}
-	@${CC} ${OBJS} ${CFLAGS}  -o ${NAME}
+	@${CC} ${OBJS} ${CFLAGS} -o ${NAME}
 
 clean:
 	@${RM} ${OBJS}

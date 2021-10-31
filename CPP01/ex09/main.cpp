@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aisraely <aisraely@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 18:26:46 by aisraely          #+#    #+#             */
-/*   Updated: 2021/08/11 18:26:47 by aisraely         ###   ########.fr       */
+/*   Updated: 2021/10/31 16:24:19 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,6 @@ int	main(void)
 
 	logger3.log("file", "I'm drowning!");
 	logger3.log("console", "And I'm Elfo!");
+
+	logger1.log("abort", "I like guys");
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aisraely <aisraely@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 18:26:17 by aisraely          #+#    #+#             */
-/*   Updated: 2021/08/11 18:26:18 by aisraely         ###   ########.fr       */
+/*   Updated: 2021/10/31 16:15:16 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 class	HumanB
 {
 	public:
-		HumanB(std::string _name);
+		HumanB(const std::string &_name);
 		void		attack(void)	const;
 		void		setWeapon(Weapon *_weapon);
 	private:
-		std::string	_name;
-		Weapon		*_weapon;
+		const std::string	&_name;
+		Weapon				*_weapon;
 };
 
 #endif

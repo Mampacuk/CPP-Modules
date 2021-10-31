@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aisraely <aisraely@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 18:26:16 by aisraely          #+#    #+#             */
-/*   Updated: 2021/08/11 18:26:17 by aisraely         ###   ########.fr       */
+/*   Updated: 2021/10/31 16:15:58 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 #include <iostream>
 
-HumanB::HumanB(std::string _name) : _name(_name)
+HumanB::HumanB(const std::string &_name) : _name(_name)
 {
 
 }
