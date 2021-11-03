@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 19:51:41 by aisraely          #+#    #+#             */
-/*   Updated: 2021/11/03 22:16:06 by aisraely         ###   ########.fr       */
+/*   Created: 2021/08/11 18:25:45 by aisraely          #+#    #+#             */
+/*   Updated: 2021/11/03 20:00:44 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DIAMONDTRAP_HPP
-# define DIAMONDTRAP_HPP
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
-# include "FragTrap.hpp"
-# include "ScavTrap.hpp"
+# include <iostream>
+# include <string>
 
-class	DiamondTrap : public ScavTrap, public FragTrap
+class	Zombie
 {
-	private:
-		const std::string	_name;
 	public:
-		DiamondTrap(void);
-		DiamondTrap(const std::string &name);
-		DiamondTrap(const DiamondTrap &copy);
-		~DiamondTrap(void);
-		using				ClapTrap::operator=;
-		using				ScavTrap::attack;
-		void				whoAmI(void);
+		void	announce(void)	const;
+		Zombie(const std::string &_name);
+		~Zombie(void);
+	private:
+		const std::string	&_name;
 };
 
 #endif

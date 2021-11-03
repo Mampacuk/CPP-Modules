@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   newZombie.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 19:02:41 by aisraely          #+#    #+#             */
-/*   Updated: 2021/11/03 22:15:30 by aisraely         ###   ########.fr       */
+/*   Created: 2021/11/03 19:55:10 by aisraely          #+#    #+#             */
+/*   Updated: 2021/11/03 20:01:04 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "DiamondTrap.hpp"
+#include "Zombie.hpp"
 
-int	main(void)
+Zombie	*newZombie(std::string name)
 {
-	DiamondTrap	turret1("Ani");
-
-	turret1.guardGate();
-	turret1.highFivesGuys();
-	turret1.attack("Hakob");
-	turret1.attack("Avo");
-	turret1.attack("Gevorg");
-	turret1.takeDamage(10);
-	turret1.beRepaired(10);
-	turret1.whoAmI();
+	return (new Zombie(name));
 }

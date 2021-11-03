@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 19:02:41 by aisraely          #+#    #+#             */
-/*   Updated: 2021/11/03 22:15:30 by aisraely         ###   ########.fr       */
+/*   Created: 2021/08/11 18:25:41 by aisraely          #+#    #+#             */
+/*   Updated: 2021/11/03 20:00:30 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "DiamondTrap.hpp"
+#include "Zombie.hpp"
 
-int	main(void)
+void	Zombie::announce(void) const
 {
-	DiamondTrap	turret1("Ani");
+	std::cout << "<" << this->_name << "> Braiiiiiiinnnssss..." << std::endl;
+}
 
-	turret1.guardGate();
-	turret1.highFivesGuys();
-	turret1.attack("Hakob");
-	turret1.attack("Avo");
-	turret1.attack("Gevorg");
-	turret1.takeDamage(10);
-	turret1.beRepaired(10);
-	turret1.whoAmI();
+Zombie::Zombie(const std::string &_name) : _name(_name)
+{
+	announce();
+}
+
+Zombie::~Zombie(void)
+{
+	std::cout << this->_name << " died!" << std::endl;
 }

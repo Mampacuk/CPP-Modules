@@ -6,13 +6,13 @@
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 18:53:29 by aisraely          #+#    #+#             */
-/*   Updated: 2021/11/01 19:39:24 by aisraely         ###   ########.fr       */
+/*   Updated: 2021/11/03 22:14:14 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-// ClapTrap::ClapTrap(void) {}
+ClapTrap::ClapTrap(void) {}
 
 ClapTrap::~ClapTrap(void)
 {

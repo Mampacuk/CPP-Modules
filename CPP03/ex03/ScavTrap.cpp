@@ -6,13 +6,13 @@
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 19:11:17 by aisraely          #+#    #+#             */
-/*   Updated: 2021/11/03 17:34:45 by aisraely         ###   ########.fr       */
+/*   Updated: 2021/11/03 22:14:19 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-// ScavTrap::ScavTrap(void) {}
+ScavTrap::ScavTrap(void) {}
 
 ScavTrap::~ScavTrap(void)
 {
@@ -28,8 +28,8 @@ ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy)
 {
 	std::cout << "[ScavTrap " << this->_name << "] (copy-constructed) I was cloned!" << std::endl;
 }
-
 void	ScavTrap::guardGate(void)
+
 {
 	std::cout << "[ScavTrap " << this->_name << "] (guarding) Guard mode activated..." << std::endl;
 }
