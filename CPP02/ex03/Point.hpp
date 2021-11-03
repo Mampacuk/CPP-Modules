@@ -6,7 +6,7 @@
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 17:13:12 by aisraely          #+#    #+#             */
-/*   Updated: 2021/10/31 21:42:18 by aisraely         ###   ########.fr       */
+/*   Updated: 2021/11/01 17:45:11 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ class	Point
 				Line	&operator=(const Line &rhs);
 				// returns 1 if the point is above, 0 if on the line, -1 if below
 				int		relativePosition(const Point &point)	const;
-				void	calculateSlope(const Point &x, const Point &y);
-				void	calculateOffset(const Point &x, const Point &y);
+				void	setCoefficients(const Point &x, const Point &y);
 			private:
-				Fixed	_slope;
+				Fixed	_coefficient_x;
+				Fixed	_coefficient_y;
 				Fixed	_offset;
 		};
 		Point(void);
@@ -39,8 +39,9 @@ class	Point
 		Point(const Point &copy);
 		Point(const Fixed &x, const Fixed &y);
 		Point		&operator=(const Point &);
-		const Fixed	&get_x(void)	const;
-		const Fixed &get_y(void)	const;
+		bool		operator==(const Point &rhs)	const;
+		const Fixed	&get_x(void)					const;
+		const Fixed &get_y(void)					const;
 	private:
 		const Fixed	x;
 		const Fixed	y;

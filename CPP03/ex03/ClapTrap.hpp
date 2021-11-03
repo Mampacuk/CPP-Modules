@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/01 18:53:33 by aisraely          #+#    #+#             */
+/*   Updated: 2021/11/01 19:38:16 by aisraely         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CLAPTRAP_HPP
 # define CLAPTRAP_HPP
 
@@ -7,28 +19,19 @@
 class	ClapTrap
 {
 	protected:
-		int					_hp;
-		int					_maxhp;
-		int					_energy;
-		int					_maxenergy;
-		int					_level;
-		std::string			_name;
-		int					_melee;
-		int					_ranged;
-		int					_armor;
-		static std::string	_deploying[5];
-		static std::string	_death[5];
-		static std::string	_equal[5];
-	public:
+		const std::string	&_name;
+		unsigned int		_hp;
+		unsigned int		_energy;
+		unsigned int		_damage;
 		ClapTrap(void);
-		ClapTrap(std::string name);
+	public:
+		ClapTrap(const std::string &_name);
 		ClapTrap(const ClapTrap &copy);
 		~ClapTrap(void);
-		ClapTrap	&operator=(ClapTrap &rhs);
-		void		rangedAttack(std::string const &target);
-		void		meleeAttack(std::string const &target);
-		void		takeDamage(unsigned int amount);
-		void		beRepaired(unsigned int amount);
+		ClapTrap		&operator=(ClapTrap &rhs);
+		virtual void	attack(std::string const &target);
+		void			takeDamage(unsigned int amount);
+		void			beRepaired(unsigned int amount);
 };
 
 #endif

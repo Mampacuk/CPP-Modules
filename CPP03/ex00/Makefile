@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aisraely <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/10/31 16:39:54 by aisraely          #+#    #+#              #
-#    Updated: 2021/11/01 18:54:19 by aisraely         ###   ########.fr        #
+#    Created: 2021/11/01 18:55:02 by aisraely          #+#    #+#              #
+#    Updated: 2021/11/01 18:55:24 by aisraely         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= bsp
+NAME	= ex00
 
-SRCS	= Fixed.cpp Point.cpp bsp.cpp main.cpp
+SRCS	= ${wildcard *.cpp}
 OBJS	= ${SRCS:.cpp=.o}
 CC		= c++
 CFLAGS	= -Wall -Wextra -Werror

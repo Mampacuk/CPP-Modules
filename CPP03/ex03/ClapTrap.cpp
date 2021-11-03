@@ -1,73 +1,63 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/01 18:53:29 by aisraely          #+#    #+#             */
+/*   Updated: 2021/11/01 19:39:24 by aisraely         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void)
-{
-	std::cout << "[Bender (unnamed)] (being constructed) " << this->_deploying[rand() % 5] << std::endl;
-}
+// ClapTrap::ClapTrap(void) {}
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "[Bender " << this->_name << "] (dying) " << this->_death[rand() % 5] << std::endl;
+	std::cout << "[Claptrap " << this->_name << "] (destructed) Shutting down." << std::endl;
+}
+
+ClapTrap::ClapTrap(const std::string &_name) : _name(_name), _hp(100), _energy(50), _damage(20)
+{
+	std::cout << "[Claptrap " << this->_name << "] (constructed) Activated." << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap &copy) :  _name(copy._name), _hp(copy._hp), _energy(copy._energy), _damage(copy._damage)
+{
+	std::cout << "[Claptrap " << this->_name << "] (copy-constructed) Hello." << std::endl;
 }
 
 ClapTrap	&ClapTrap::operator=(ClapTrap &rhs)
 {
 	this->_hp = rhs._hp;
-	this->_maxhp = rhs._maxhp;
 	this->_energy = rhs._energy;
-	this->_maxenergy = rhs._maxenergy;
-	this->_level = rhs._level;
-	this->_name = rhs._name;
-	this->_melee = rhs._melee;
-	this->_ranged = rhs._ranged;
-	this->_armor = rhs._ranged;
-	std::cout << "[Bender " << this->_name << "] (being assigned) " << this->_equal[rand() % 5] << std::endl;
+	this->_damage = rhs._damage;
+	std::cout << "[Claptrap " << this->_name << "] (being assigned) Finally, equality was achieved." << std::endl;
 	return (*this);
 }
 
-void	ClapTrap::rangedAttack(std::string const &target)
+void	ClapTrap::attack(std::string const &target)
 {
-	(void)target;
-}
-
-void	ClapTrap::meleeAttack(std::string const &target)
-{
-	(void)target;
+	if (this->_energy >= 2)
+	{
+		std::cout << "[Claptrap " << this->_name << "] (attacking " << target << ", dealing " << this->_damage << " damage) Demolition commenced." << std::endl;
+		this->_energy -= 2;
+	}
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	(void)amount;
+	if (static_cast<int>(this->_hp) - static_cast<int>(amount) < 0)
+		this->_hp = 0;
+	else
+		this->_hp -= amount;
+	std::cout << "[Claptrap " << this->_name << "] (taking " << amount << " damage; hp now: " << this->_hp << ") It burns..." << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	(void)amount;
+	this->_hp += amount;
+	std::cout << "[Claptrap " << this->_name << "] (repaired " << amount << " points; hp now: " << this->_hp << ") I love it." << std::endl;
 }
-
-std::string	ClapTrap::_equal[5] =
-{
-	"Stop equalizing me!",
-	"I was cloned!",
-	"I have a child now. Let's sell him this goof.",
-	"A mini-Bender in the town.",
-	"Hey! He's mine!"
-};
-
-std::string	ClapTrap::_deploying[5] =
-{
-	"Hey, I'm Bender.",
-	"Hey meatbags!",
-	"Bender Rodríguez in the town!",
-	"Kiss my shiny metal ass!",
-	"Name's Bender."
-};
-
-std::string	ClapTrap::_death[5] =
-{
-	"I don't care.",
-	"You suck!",
-	"Ain't no worries.",
-	"I'm dead, boo-hoo...",
-	"I'm 40% dead!"
-};

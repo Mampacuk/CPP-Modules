@@ -1,34 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/01 19:11:19 by aisraely          #+#    #+#             */
+/*   Updated: 2021/11/01 20:00:16 by aisraely         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SCAVTRAP_HPP
 # define SCAVTRAP_HPP
 
-# include <string>
-# include <iostream>
 # include "ClapTrap.hpp"
 
-class	ScavTrap : public ClapTrap
+class	ScavTrap : virtual public ClapTrap
 {
-	private:
-		static std::string	_deploying[5];
-		static std::string	_death[5];
-		static std::string	_attack[10];
-		static std::string	_equal[5];
-		static std::string	_hurt[15];
-		static std::string	_healed[5];
-		static std::string	_noenergy[5];
-	public:
-
+	protected:
 		ScavTrap(void);
-		ScavTrap(std::string name);
+	public:
+		ScavTrap(const std::string &_name);
 		ScavTrap(const ScavTrap &copy);
 		~ScavTrap(void);
-		void	rangedAttack(std::string const &target);
-		void	meleeAttack(std::string const &target);
-		void	takeDamage(unsigned int amount);
-		void	beRepaired(unsigned int amount);
+		void	attack(std::string const &target);
+		void	guardGate(void);
 		using	ClapTrap::operator=;
-		void	challengeNewcomer(std::string const &target);
 };
-
-
 
 #endif

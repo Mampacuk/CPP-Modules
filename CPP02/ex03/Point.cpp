@@ -6,7 +6,7 @@
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 17:13:08 by aisraely          #+#    #+#             */
-/*   Updated: 2021/10/31 21:42:48 by aisraely         ###   ########.fr       */
+/*   Updated: 2021/11/01 17:46:18 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ Point	&Point::operator=(const Point &)
 	return (*this);
 }
 
+bool	Point::operator==(const Point &rhs) const
+{
+	return (this->x == rhs.x && this->y == rhs.y);
+}
+
 const Fixed	&Point::get_x(void) const
 {
 	return (this->x);
@@ -39,40 +44,33 @@ Point::Line::Line(void) {}
 
 Point::Line::~Line(void) {}
 
-Point::Line::Line(const Line &copy) : _slope(copy._slope), _offset(copy._offset) {}
+Point::Line::Line(const Line &copy) : _coefficient_x(copy._coefficient_x), _coefficient_y(copy._coefficient_y), _offset(copy._offset) {}
 
 Point::Line	&Point::Line::operator=(const Line &rhs)
 {
+	this->_coefficient_x = rhs._coefficient_x;
+	this->_coefficient_y = rhs._coefficient_y;
 	this->_offset = rhs._offset;
-	this->_slope = rhs._slope;
 	return (*this);
 }
 
 int	Point::Line::relativePosition(const Point &point) const
 {
-	if (point.get_y() > this->_slope * point.get_x() + this->_offset)
+	if (this->_coefficient_x * point.get_x() + this->_coefficient_y * point.get_y() + this->_offset > Fixed(0))
 		return (1);
-	else if (point.get_y() < this->_slope * point.get_x() + this->_offset)
+	else if (this->_coefficient_x * point.get_x() + this->_coefficient_y * point.get_y() + this->_offset < Fixed(0))
 		return (-1);
 	return (0);
 }
 
-void	Point::Line::calculateSlope(const Point &x, const Point &y)
+void	Point::Line::setCoefficients(const Point &x, const Point &y)
 {
 	Fixed	x1 = x.get_x();
 	Fixed	y1 = x.get_y();
 	Fixed	x2 = y.get_x();
 	Fixed	y2 = y.get_y();
 
-	this->_slope = (y2 - y1) / (x2 - x1);
-}
-
-void	Point::Line::calculateOffset(const Point &x, const Point &y)
-{
-	Fixed	x1 = x.get_x();
-	Fixed	y1 = x.get_y();
-	Fixed	x2 = y.get_x();
-	Fixed	y2 = y.get_y();
-
-	this->_offset = (x2 * y1 - x1 * y2) / (x2 - x1);
+	this->_coefficient_x = y1 - y2;
+	this->_coefficient_y = x2 - x1;
+	this->_offset = (x1 * y2) - (x2 * y1);
 }
