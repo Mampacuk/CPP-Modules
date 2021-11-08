@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisraely <aisraely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 18:26:25 by aisraely          #+#    #+#             */
-/*   Updated: 2021/08/11 18:26:26 by aisraely         ###   ########.fr       */
+/*   Created: 2021/08/11 18:26:19 by aisraely          #+#    #+#             */
+/*   Updated: 2021/08/11 18:26:20 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_HPP
-# define WEAPON_HPP
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
-# include <string>
-
-class	Weapon
+int	main(void)
 {
-	public:
-		Weapon(const std::string &_type);
-		const std::string	&getType(void)	const;
-		void				setType(const std::string &_type);
-	private:
-		std::string	_type;
-};
-
-#endif
+	{
+		Weapon club = Weapon("crude spiked club");
+		HumanA bob("Bob", club);
+		bob.attack();
+		club.setType("some other type of club");
+		bob.attack();
+	}
+	{
+		Weapon club = Weapon("crude spiked club");
+		HumanB jim("Jim");
+		jim.setWeapon(&club);
+		jim.attack();
+		club.setType("some other type of club");
+		jim.attack();
+	}
+}

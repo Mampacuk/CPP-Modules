@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ZombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   Karen.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/03 20:05:06 by aisraely          #+#    #+#             */
-/*   Updated: 2021/11/03 21:29:28 by aisraely         ###   ########.fr       */
+/*   Created: 2021/11/08 13:47:00 by aisraely          #+#    #+#             */
+/*   Updated: 2021/11/08 13:47:00 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef KAREN_HPP
+# define KAREN_HPP
 
-Zombie	*zombieHorde(int N, std::string name)
+# include <string>
+# include <iostream>
+
+class	Karen
 {
-	Zombie	*horde = new Zombie[N];
-	for (int i = 0; i < N; i++)
-		horde[i].set_name(name);
-	return (horde);
-}
+	private:
+		void	debug(void);
+		void	info(void);
+		void	warning(void);
+		void	error(void);
+	public:
+		void	complain(std::string level);
+};
+
+#endif

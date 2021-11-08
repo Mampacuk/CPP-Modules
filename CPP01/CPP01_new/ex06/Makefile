@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aisraely <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/11/03 19:57:26 by aisraely          #+#    #+#              #
-#    Updated: 2021/11/03 20:00:19 by aisraely         ###   ########.fr        #
+#    Created: 2021/11/08 14:14:31 by aisraely          #+#    #+#              #
+#    Updated: 2021/11/08 14:14:31 by aisraely         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= ex00
+NAME	= karenFilter
 
 SRCS	= ${wildcard *.cpp}
 OBJS	= ${SRCS:.cpp=.o}

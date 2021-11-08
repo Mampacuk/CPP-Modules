@@ -12,7 +12,7 @@
 
 NAME	= ex01
 
-SRCS	= ${wildcard *cpp}
+SRCS	= ${wildcard *.cpp}
 OBJS	= ${SRCS:.cpp=.o}
 CC		= c++
 CFLAGS	= -Wall -Wextra -Werror

@@ -20,10 +20,12 @@ class	Zombie
 {
 	public:
 		void	announce(void)	const;
+		void	set_name(const std::string &name);
 		Zombie(const std::string &_name);
+		Zombie(void);
 		~Zombie(void);
 	private:
-		const std::string	&_name;
+		std::string	_name;
 };
 
 #endif
