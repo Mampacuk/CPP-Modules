@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/18 10:34:30 by aisraely          #+#    #+#             */
-/*   Updated: 2021/12/18 10:34:30 by aisraely         ###   ########.fr       */
+/*   Created: 2021/11/30 00:20:05 by aisraely          #+#    #+#             */
+/*   Updated: 2021/11/30 00:20:05 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
-#include "Cat.hpp"
+#ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
-int	main()
+# include <string>
+# include <iostream>
+
+class	Animal
 {
-	Animal	*pointers[20];
+	public:
+		Animal();
+		virtual ~Animal();
+		Animal(const Animal &copy);
+		Animal	&operator=(const Animal &rhs);
+		const std::string	&getType() const;
+		virtual void		makeSound() const;
+	protected:
+		Animal(const std::string &type);
+		std::string	type;
+};
 
-	for (int i = 0; i < 20; i++)
-	{
-		if (i < 10)
-			pointers[i] = new Dog;
-		else
-			pointers[i] = new Cat;
-	}
-	pointers[4]->makeSound();
-	pointers[10]->makeSound();
-	for (int i = 0; i < 20; i++)
-		delete pointers[i];
-
-	// Animal	hello;
-}
+#endif

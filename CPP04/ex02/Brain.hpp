@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/18 10:34:30 by aisraely          #+#    #+#             */
-/*   Updated: 2021/12/18 10:34:30 by aisraely         ###   ########.fr       */
+/*   Created: 2021/12/18 13:15:58 by aisraely          #+#    #+#             */
+/*   Updated: 2021/12/18 13:15:58 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
-#include "Cat.hpp"
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
-int	main()
+# include <string>
+# include <iostream>
+
+class	Brain
 {
-	Animal	*pointers[20];
+	public:
+		Brain();
+		~Brain();
+		Brain(const Brain &copy);
+		Brain	&operator=(const Brain &rhs);
+	private:
+		std::string	ideas[100];
+};
 
-	for (int i = 0; i < 20; i++)
-	{
-		if (i < 10)
-			pointers[i] = new Dog;
-		else
-			pointers[i] = new Cat;
-	}
-	pointers[4]->makeSound();
-	pointers[10]->makeSound();
-	for (int i = 0; i < 20; i++)
-		delete pointers[i];
-
-	// Animal	hello;
-}
+#endif

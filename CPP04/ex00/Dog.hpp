@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/18 10:34:30 by aisraely          #+#    #+#             */
-/*   Updated: 2021/12/18 10:34:30 by aisraely         ###   ########.fr       */
+/*   Created: 2021/12/18 10:23:56 by aisraely          #+#    #+#             */
+/*   Updated: 2021/12/18 10:23:56 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
-#include "Cat.hpp"
+#ifndef DOG_HPP
+# define DOG_HPP
 
-int	main()
+# include "Animal.hpp"
+
+class	Dog : public Animal
 {
-	Animal	*pointers[20];
+	public:
+		Dog();
+		~Dog();
+		Dog(const Dog&);
+		using Animal::operator=;
+		void	makeSound() const;
+};
 
-	for (int i = 0; i < 20; i++)
-	{
-		if (i < 10)
-			pointers[i] = new Dog;
-		else
-			pointers[i] = new Cat;
-	}
-	pointers[4]->makeSound();
-	pointers[10]->makeSound();
-	for (int i = 0; i < 20; i++)
-		delete pointers[i];
-
-	// Animal	hello;
-}
+#endif

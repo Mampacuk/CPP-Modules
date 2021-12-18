@@ -1,132 +1,73 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Character.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/18 14:32:23 by aisraely          #+#    #+#             */
+/*   Updated: 2021/12/18 14:32:23 by aisraely         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Character.hpp"
 
-Character::Character(void)
-{
-	this->_size = 0;
-	this->_inventory = NULL;
-}
+Character::Character() : _inventory(), _size(0) {}
 
-Character::Character(const std::string &name)
-{
-	this->_size = 0;
-	this->_inventory = NULL;
-	this->_name = name;
-}
+Character::Character(const std::string &name) : _inventory(), _size(0), _name(name) {}
 
 Character::~Character(void)
 {
-	int	i;
-
-	i = 0;
-	while (i < this->_size)
-		delete this->_inventory[i++];
-	delete [] this->_inventory;
+	for (int i = 0; i < this->_size; i++)
+		delete this->_inventory[i];
 }
 
-Character::Character(const Character &copy)
+Character::Character(const Character &copy) : _inventory()
 {
-	int	i;
-
-	this->_size = copy.getCount();
-	this->_inventory = new AMateria*[this->_size];
-	i = 0;
-	while (i < this->_size)
-	{
-		this->_inventory[i] = copy.getInventory()[i]->clone();
-		i++;
-	}
+	this->_size = copy._size;
+	this->_name = copy._name;
+	for (int i = 0; i < this->_size; i++)
+		this->_inventory[i] = copy._inventory[i]->clone();
 }
 
 Character	&Character::operator=(const Character &rhs)
 {
-	int	i;
-
-	i = 0;
-	std::cout << "ENTERED ASSIGNING" << std::endl;
-	if (this->_size > 0)
-	{
-		while (i < this->_size)
-			delete this->_inventory[i++];
-		delete [] _inventory;	
-	}
+	for (int i = 0; i < this->_size; i++)
+		delete this->_inventory[i];
 	this->_size = rhs._size;
-	this->_inventory = new AMateria*[this->_size];
-	i = 0;
-	while (i < this->_size)
-	{
+	this->_name = rhs._name;
+	for (int i = 0; i < this->_size; i++)
 		this->_inventory[i] = rhs._inventory[i]->clone();
-		i++;
-	}
 	return (*this);
-}
-
-int	Character::getCount(void) const
-{
-	return (this->_size);
-}
-
-AMateria	**Character::getInventory(void) const
-{
-	return (this->_inventory);
 }
 
 void	Character::equip(AMateria *m)
 {
-	int				i;
-	AMateria	**copy;
-
-	if (!m || this->_size >= 4)
-		return ;
-	i = 0;
-	if (!this->_size)
+	if (m && this->_size < 4)
 	{
-		copy = new AMateria*[1];
-		copy[0] = m->clone();
-		this->_inventory = copy;
+		this->_inventory[this->_size] = m;
+		this->_size++;
 	}
-	else
-	{
-		copy = new AMateria*[this->_size + 1];
-		i = 0;
-		while (i < this->_size)
-		{
-			copy[i] = this->_inventory[i];
-			i++;
-		}
-		copy[i] = m->clone();
-		delete [] this->_inventory;
-		this->_inventory = copy;
-	}
-	this->_size++;
 }
 
 void	Character::unequip(int idx)
 {
-	int			i;
-	int			j;
-	AMateria	**copy;
-
-	if (!(idx >= 0 && idx < this->_size))
-		return ;
-	copy = new AMateria*[this->_size - 1];
-	i = 0;
-	j = 0;
-	while (i < this->_size)
+	if (idx >= 0 && idx < this->_size)
 	{
-		if (i != idx)
-			copy[j++] =  this->_inventory[i];
-		i++;
+		idx++;
+		while (idx < this->_size)
+		{
+			this->_inventory[idx - 1] = this->_inventory[idx];
+			idx++;
+		}
+		this->_size--;
 	}
-	delete [] this->_inventory;
-	this->_inventory = copy;
-	this->_size--;
 }
 
 void	Character::use(int idx, ICharacter& target)
 {
-	if (!(idx >= 0 && idx < this->_size))
-		return ;
-	this->_inventory[idx]->use(target);
+	if (idx > 0 && idx < this->_size)
+		this->_inventory[idx]->use(target);
 }
 
 const std::string	&Character::getName(void) const
@@ -134,9 +75,9 @@ const std::string	&Character::getName(void) const
 	return (this->_name);
 }
 
-AMateria	*Character::getItem(int idx) const
+const AMateria	*Character::getItem(int idx)
 {
-	if (idx >= 0 && idx < this->_size)
+	if (idx > 0 && idx < this->_size)
 		return (this->_inventory[idx]);
 	return (NULL);
 }

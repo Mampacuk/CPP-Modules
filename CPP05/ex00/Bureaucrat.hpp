@@ -7,8 +7,7 @@
 class	Bureaucrat
 {
 	public:
-		Bureaucrat(std::string &name, int grade);
-		Bureaucrat(void);
+		Bureaucrat(const std::string &name, int grade);
 		~Bureaucrat(void);
 		Bureaucrat(const Bureaucrat &copy);
 		Bureaucrat	&operator=(const Bureaucrat &rhs);
@@ -17,23 +16,18 @@ class	Bureaucrat
 		void				promote(void);
 		void				demote(void);
 	private:
+		Bureaucrat(void);
 		class	GradeTooHighException : public std::exception
 		{
 			public:
-				virtual const char *what() const throw()
-				{
-					return ("The grade is higher than the maximum possible grade (1).");
-				}
+				virtual const char *what() const throw();
 		};
 		class	GradeTooLowException : public std::exception
 		{
 			public:
-				virtual const char *what() const throw()
-				{
-					return ("The grade is lower than the minimum possible grade (150).");
-				}
+				virtual const char *what() const throw();
 		};
-		const std::string	&_name;
+		const std::string	_name;
 		int					_grade;
 };
 

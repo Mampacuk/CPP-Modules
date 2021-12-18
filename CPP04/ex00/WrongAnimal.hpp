@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   WrongWrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/18 10:34:30 by aisraely          #+#    #+#             */
-/*   Updated: 2021/12/18 10:34:30 by aisraely         ###   ########.fr       */
+/*   Created: 2021/12/18 10:53:46 by aisraely          #+#    #+#             */
+/*   Updated: 2021/12/18 10:53:46 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
-#include "Cat.hpp"
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
-int	main()
+# include <string>
+# include <iostream>
+
+class	WrongAnimal
 {
-	Animal	*pointers[20];
+	public:
+		WrongAnimal();
+		virtual ~WrongAnimal();
+		WrongAnimal(const WrongAnimal &copy);
+		WrongAnimal	&operator=(const WrongAnimal &rhs);
+		const std::string	&getType() const;
+		void				makeSound() const;
+	protected:
+		WrongAnimal(const std::string &type);
+		std::string	type;
+};
 
-	for (int i = 0; i < 20; i++)
-	{
-		if (i < 10)
-			pointers[i] = new Dog;
-		else
-			pointers[i] = new Cat;
-	}
-	pointers[4]->makeSound();
-	pointers[10]->makeSound();
-	for (int i = 0; i < 20; i++)
-		delete pointers[i];
-
-	// Animal	hello;
-}
+#endif

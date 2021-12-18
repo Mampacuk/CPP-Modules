@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/18 10:34:30 by aisraely          #+#    #+#             */
-/*   Updated: 2021/12/18 10:34:30 by aisraely         ###   ########.fr       */
+/*   Created: 2021/12/18 10:23:11 by aisraely          #+#    #+#             */
+/*   Updated: 2021/12/18 10:23:11 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
-#include "Cat.hpp"
+#ifndef CAT_HPP
+# define CAT_HPP
 
-int	main()
+# include "Animal.hpp"
+# include "Brain.hpp"
+
+class	Cat : public Animal
 {
-	Animal	*pointers[20];
+	public:
+		Cat();
+		~Cat();
+		Cat(const Cat&);
+		using Animal::operator=;
+		void	makeSound() const;
+	private:
+		Brain	*_brain;
+};
 
-	for (int i = 0; i < 20; i++)
-	{
-		if (i < 10)
-			pointers[i] = new Dog;
-		else
-			pointers[i] = new Cat;
-	}
-	pointers[4]->makeSound();
-	pointers[10]->makeSound();
-	for (int i = 0; i < 20; i++)
-		delete pointers[i];
-
-	// Animal	hello;
-}
+#endif

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/18 14:32:41 by aisraely          #+#    #+#             */
+/*   Updated: 2021/12/18 14:32:41 by aisraely         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CURE_HPP
 # define CURE_HPP
 
@@ -9,10 +21,10 @@ class	Cure : public AMateria
 	public:
 		Cure(void);
 		Cure(const Cure &copy);
-		~Cure(void);
-		using			AMateria::operator=;
-		Cure			*clone(void)	const;
-		virtual void	use(ICharacter &target);
+		~Cure();
+		using		AMateria::operator=;
+		Cure		*clone(void)	const;
+		void		use(ICharacter &target);
 };
 
 #endif

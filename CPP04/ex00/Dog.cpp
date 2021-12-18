@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/18 10:34:30 by aisraely          #+#    #+#             */
-/*   Updated: 2021/12/18 10:34:30 by aisraely         ###   ########.fr       */
+/*   Created: 2021/12/18 10:23:49 by aisraely          #+#    #+#             */
+/*   Updated: 2021/12/18 10:23:49 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
-#include "Cat.hpp"
 
-int	main()
+Dog::Dog() : Animal("Dog")
 {
-	Animal	*pointers[20];
+	std::cout << this->type << " created with default ctor" << std::endl;
+}
 
-	for (int i = 0; i < 20; i++)
-	{
-		if (i < 10)
-			pointers[i] = new Dog;
-		else
-			pointers[i] = new Cat;
-	}
-	pointers[4]->makeSound();
-	pointers[10]->makeSound();
-	for (int i = 0; i < 20; i++)
-		delete pointers[i];
+Dog::~Dog()
+{
+	std::cout << this->type << " destroyed" << std::endl;
+}
 
-	// Animal	hello;
+Dog::Dog(const Dog&) : Animal("Dog")
+{
+	std::cout << this->type << " created with copy ctor" << std::endl;
+}
+
+void	Dog::makeSound() const
+{
+	std::cout << "* bark! Dog noises *" << std::endl;
 }

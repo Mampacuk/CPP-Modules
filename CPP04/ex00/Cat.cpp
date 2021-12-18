@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/18 10:34:30 by aisraely          #+#    #+#             */
-/*   Updated: 2021/12/18 10:34:30 by aisraely         ###   ########.fr       */
+/*   Created: 2021/12/18 10:23:44 by aisraely          #+#    #+#             */
+/*   Updated: 2021/12/18 10:23:44 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
 #include "Cat.hpp"
 
-int	main()
+Cat::Cat() : Animal("Cat")
 {
-	Animal	*pointers[20];
+	std::cout << this->type << " created with default ctor" << std::endl;
+}
 
-	for (int i = 0; i < 20; i++)
-	{
-		if (i < 10)
-			pointers[i] = new Dog;
-		else
-			pointers[i] = new Cat;
-	}
-	pointers[4]->makeSound();
-	pointers[10]->makeSound();
-	for (int i = 0; i < 20; i++)
-		delete pointers[i];
+Cat::~Cat()
+{
+	std::cout << this->type << " destroyed" << std::endl;
+}
 
-	// Animal	hello;
+Cat::Cat(const Cat&) : Animal("Cat")
+{
+	std::cout << this->type << " created with copy ctor" << std::endl;
+}
+
+void	Cat::makeSound() const
+{
+	std::cout << "* meow! cat noises *" << std::endl;
 }
