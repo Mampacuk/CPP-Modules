@@ -40,10 +40,7 @@ MateriaSource	&MateriaSource::operator=(const MateriaSource &rhs)
 void	MateriaSource::learnMateria(AMateria *m)
 {
 	if (m && this->_size < 4)
-	{
-		this->_sources[this->_size] = m;
-		this->_size++;
-	}
+		this->_sources[this->_size++] = m;
 }
 
 AMateria	*MateriaSource::createMateria(const std::string &type)

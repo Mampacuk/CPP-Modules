@@ -44,10 +44,7 @@ Character	&Character::operator=(const Character &rhs)
 void	Character::equip(AMateria *m)
 {
 	if (m && this->_size < 4)
-	{
-		this->_inventory[this->_size] = m;
-		this->_size++;
-	}
+		this->_inventory[this->_size++] = m;
 }
 
 void	Character::unequip(int idx)
@@ -66,7 +63,7 @@ void	Character::unequip(int idx)
 
 void	Character::use(int idx, ICharacter& target)
 {
-	if (idx > 0 && idx < this->_size)
+	if (idx >= 0 && idx < this->_size)
 		this->_inventory[idx]->use(target);
 }
 
@@ -77,7 +74,7 @@ const std::string	&Character::getName(void) const
 
 const AMateria	*Character::getItem(int idx)
 {
-	if (idx > 0 && idx < this->_size)
+	if (idx >= 0 && idx < this->_size)
 		return (this->_inventory[idx]);
 	return (NULL);
 }
