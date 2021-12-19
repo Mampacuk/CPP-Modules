@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/19 12:01:45 by aisraely          #+#    #+#             */
-/*   Updated: 2021/12/19 12:01:45 by aisraely         ###   ########.fr       */
+/*   Created: 2021/12/19 12:02:03 by aisraely          #+#    #+#             */
+/*   Updated: 2021/12/19 12:02:03 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,34 @@ void	Bureaucrat::demote()
 		this->_grade++;
 	else
 		throw GradeTooLowException();
+}
+
+void	Bureaucrat::signForm(Form &form) const
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << this->_name << " succeeded in signing `" << form.getName() << "`" << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << this->_name << " failed to sign `" << form.getName()
+			<< "` because his/her grade is too low" << std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm(const Form &form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << this->_name << " executes `" << form.getName() << "`" << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << this->_name << " failed to execute `" << form.getName() << "`. Reason: " << e.what() << std::endl;
+	}
+	
 }
 
 std::ostream	&operator<<(std::ostream &o, const Bureaucrat &b)

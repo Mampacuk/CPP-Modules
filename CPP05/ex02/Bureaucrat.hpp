@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/19 12:01:49 by aisraely          #+#    #+#             */
-/*   Updated: 2021/12/19 12:01:49 by aisraely         ###   ########.fr       */
+/*   Created: 2021/12/19 12:02:07 by aisraely          #+#    #+#             */
+/*   Updated: 2021/12/19 12:02:07 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <string>
 # include <iostream>
 
+class	Form;
+
 class	Bureaucrat
 {
 	public:
@@ -23,8 +25,10 @@ class	Bureaucrat
 		~Bureaucrat();
 		Bureaucrat(const Bureaucrat &copy);
 		Bureaucrat	&operator=(const Bureaucrat &rhs);
-		const std::string	&getName()	const;
-		int					getGrade()	const;
+		const std::string	&getName() const;
+		int					getGrade() const;
+		void				signForm(Form &form) const;
+		void				executeForm(const Form &form);
 		void				promote();
 		void				demote();
 	private:
@@ -42,6 +46,8 @@ class	Bureaucrat
 		const std::string	_name;
 		int					_grade;
 };
+
+# include "Form.hpp"
 
 std::ostream	&operator<<(std::ostream &o, const Bureaucrat &b);
 
