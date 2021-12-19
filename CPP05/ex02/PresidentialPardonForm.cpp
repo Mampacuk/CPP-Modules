@@ -16,7 +16,7 @@ PresidentialPardonForm::PresidentialPardonForm() {}
 
 PresidentialPardonForm::~PresidentialPardonForm() {}
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string &target) : Form("Presidential Pardon", target, 25, 5) {}
+PresidentialPardonForm::PresidentialPardonForm(const std::string &target) : Form("presidential pardon", target, 25, 5) {}
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &copy) : Form(copy) {}
 

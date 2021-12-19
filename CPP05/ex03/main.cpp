@@ -10,43 +10,39 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 #include <ctime>
 
 int	main()
 {
 	srand(time(0));
-	ShrubberyCreationForm	shrub("PlanetExpress");
-	RobotomyRequestForm		robotomy("Bender");
-	PresidentialPardonForm	pardon("Turanga Leela");
 
 	Bureaucrat				Mica("Mica Hilson", 145);
 	Bureaucrat				Brian("Brian Ellison", 137);
 	Bureaucrat				Karin("Karin Markides", 1);
 
-	std::cout << Mica << std::endl << Brian << std::endl << Karin << std::endl;
-	std::cout << shrub << std::endl;
-	Karin.executeForm(shrub);
-	Mica.signForm(shrub);
-	Mica.executeForm(shrub);
-	Brian.executeForm(shrub);
-	Karin.executeForm(shrub);
-	std::cout << shrub << std::endl;
+	Intern	intern;
+
+	Form	*fshrub = intern.makeForm("shrubbery creation", "home");
+	Form	*frobo = intern.makeForm("robotomy request", "Calculon");
+	Form	*fpardon = intern.makeForm("presidential pardon", "Zapp Brannigan");
+	Form	*fnull = intern.makeForm("resurrection ritual", "Luci");
+
+	std::cout << "fshrub located at " << fshrub << std::endl;
+	std::cout << "frobo located at " << frobo << std::endl;
+	std::cout << "fpardon located at " << fpardon << std::endl;
+	std::cout << "fnull located at " << fnull << std::endl;
 
 	std::cout << std::endl;
 
-	std::cout << robotomy << std::endl;
-	Brian.signForm(robotomy);
-	Karin.signForm(robotomy);
-	Karin.executeForm(robotomy);
-	Karin.executeForm(robotomy);
-	Karin.executeForm(robotomy);
+	Mica.signForm(*fshrub);
+	Brian.executeForm(*fshrub);
+	Karin.signForm(*frobo);
+	Karin.executeForm(*frobo);
+	Karin.signForm(*fpardon);
+	Karin.executeForm(*fpardon);
 
-	std::cout << std::endl;
-
-	std::cout << pardon << std::endl;
-	Karin.signForm(pardon);
-	Karin.executeForm(pardon);
+	delete fshrub;
+	delete frobo;
+	delete fpardon;
 }

@@ -16,7 +16,7 @@ RobotomyRequestForm::RobotomyRequestForm() {}
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : Form("Robotomy Request", target, 72, 45) {}
+RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : Form("robotomy request", target, 72, 45) {}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy) : Form(copy) {}
 

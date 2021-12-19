@@ -16,7 +16,7 @@ ShrubberyCreationForm::ShrubberyCreationForm() {}
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : Form("Shrubbery Creation", target, 145, 137) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : Form("shrubbery creation", target, 145, 137) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) : Form(copy) {}
 
