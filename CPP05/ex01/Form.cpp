@@ -73,7 +73,7 @@ std::ostream	&operator<<(std::ostream &o, const Form &f)
 	o << "Form `" << f.getName() << "`, ";
 	if (!f.isSigned())
 		o << "not ";
-	o << "signed, requires Grade " << f.getSignGrade() << " to sign and " << f.getExecutionGrade() << " to execute" << std::endl;
+	o << "signed, requires Grade " << f.getSignGrade() << " to sign and " << f.getExecutionGrade() << " to execute";
 	return (o);
 }
 
