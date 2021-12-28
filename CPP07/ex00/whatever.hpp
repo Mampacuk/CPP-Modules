@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 18:25:33 by aisraely          #+#    #+#             */
-/*   Updated: 2021/11/03 19:59:45 by aisraely         ###   ########.fr       */
+/*   Created: 2021/12/27 17:01:36 by aisraely          #+#    #+#             */
+/*   Updated: 2021/12/27 17:01:36 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef WHATEVER_HPP
+# define WHATEVER_HPP
 
-Zombie	*newZombie(std::string name);
-void	randomChump(std::string name);
-
-int	main(void)
+template <typename T>
+void	swap(T &a, T &b)
 {
-	Zombie	*Avo = newZombie("debil");
-	Zombie	*Hakob = newZombie("durak");
-	Zombie	*Shahen = newZombie("boba");
+	T	temp = a;
 
-	randomChump("Gevorg");
-	randomChump("Vlad");
-	
-	delete Shahen;
-	delete Hakob;
-	delete Avo;
+	a = b;
+	b = temp;
 }
+
+template <typename T>
+const T	&min(const T &a, const T &b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
+
+template <typename T>
+const T	&max(const T &a, const T &b)
+{
+	if (a > b)
+		return (a);
+	return (b);
+}
+
+#endif

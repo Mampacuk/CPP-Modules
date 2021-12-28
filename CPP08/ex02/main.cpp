@@ -5,26 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 18:25:33 by aisraely          #+#    #+#             */
-/*   Updated: 2021/11/03 19:59:45 by aisraely         ###   ########.fr       */
+/*   Created: 2021/12/28 15:33:25 by aisraely          #+#    #+#             */
+/*   Updated: 2021/12/28 15:33:25 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "mutantstack.hpp"
+#include <iostream>
 
-Zombie	*newZombie(std::string name);
-void	randomChump(std::string name);
-
-int	main(void)
+int	main()
 {
-	Zombie	*Avo = newZombie("debil");
-	Zombie	*Hakob = newZombie("durak");
-	Zombie	*Shahen = newZombie("boba");
-
-	randomChump("Gevorg");
-	randomChump("Vlad");
-	
-	delete Shahen;
-	delete Hakob;
-	delete Avo;
+	MutantStack<int> mstack;
+	mstack.push(5);
+	mstack.push(17);
+	std::cout << mstack.top() << std::endl;
+	mstack.pop();
+	std::cout << mstack.size() << std::endl;
+	mstack.push(3);
+	mstack.push(5);
+	mstack.push(737);
+	//[...]
+	mstack.push(0);
+	MutantStack<int>::iterator it = mstack.begin();
+	MutantStack<int>::iterator ite = mstack.end();
+	++it;
+	--it;
+	while (it != ite)
+	{
+		std::cout << *it << std::endl;
+		++it;
+	}
+	std::stack<int> s(mstack);
+	return 0;
 }

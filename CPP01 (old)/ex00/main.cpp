@@ -5,26 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 18:25:33 by aisraely          #+#    #+#             */
-/*   Updated: 2021/11/03 19:59:45 by aisraely         ###   ########.fr       */
+/*   Created: 2021/08/11 18:24:36 by aisraely          #+#    #+#             */
+/*   Updated: 2021/10/31 15:04:08 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Pony.hpp"
 
-Zombie	*newZombie(std::string name);
-void	randomChump(std::string name);
+void	ponyOnTheHeap(void)
+{
+	Pony	*heappony;
+
+	heappony = new Pony("Lisa", 5);
+	delete heappony;
+}
+
+void	ponyOnTheStack(void)
+{
+	Pony	stackpony("Beanie", 7);
+}
 
 int	main(void)
 {
-	Zombie	*Avo = newZombie("debil");
-	Zombie	*Hakob = newZombie("durak");
-	Zombie	*Shahen = newZombie("boba");
-
-	randomChump("Gevorg");
-	randomChump("Vlad");
-	
-	delete Shahen;
-	delete Hakob;
-	delete Avo;
+	ponyOnTheHeap();
+	ponyOnTheStack();
 }

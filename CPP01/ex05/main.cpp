@@ -3,20 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aisraely <aisraely@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 18:26:06 by aisraely          #+#    #+#             */
-/*   Updated: 2021/08/11 18:26:07 by aisraely         ###   ########.fr       */
+/*   Created: 2021/11/08 13:46:57 by aisraely          #+#    #+#             */
+/*   Updated: 2021/11/08 13:46:57 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Human.hpp"
-#include <iostream>
+#include "Karen.hpp"
 
 int	main(void)
 {
-	Human	bob;
-	
-	std::cout << bob.identify() << std::endl;
-	std::cout << bob.getBrain().identify() << std::endl;
+	Karen	karen;
+
+	karen.complain("debug");
+	karen.complain("info");
+	karen.complain("warning");
+	karen.complain("error");
+	karen.complain("masks, vaccinations, gays, lockdown etc..");
 }

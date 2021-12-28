@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 18:25:33 by aisraely          #+#    #+#             */
-/*   Updated: 2021/11/03 19:59:45 by aisraely         ###   ########.fr       */
+/*   Created: 2021/12/27 17:24:28 by aisraely          #+#    #+#             */
+/*   Updated: 2021/12/27 17:24:28 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef ITER_HPP
+# define ITER_HPP
 
-Zombie	*newZombie(std::string name);
-void	randomChump(std::string name);
+#include <cstddef>
 
-int	main(void)
+template <typename T>
+void	iter(T *arr, size_t len, void func(T&))
 {
-	Zombie	*Avo = newZombie("debil");
-	Zombie	*Hakob = newZombie("durak");
-	Zombie	*Shahen = newZombie("boba");
-
-	randomChump("Gevorg");
-	randomChump("Vlad");
-	
-	delete Shahen;
-	delete Hakob;
-	delete Avo;
+	for (size_t i = 0; i < len; i++)
+		func(arr[i]);
 }
+
+#endif

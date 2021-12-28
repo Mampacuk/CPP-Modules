@@ -3,28 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aisraely <aisraely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 18:25:33 by aisraely          #+#    #+#             */
-/*   Updated: 2021/11/03 19:59:45 by aisraely         ###   ########.fr       */
+/*   Created: 2021/08/11 18:26:06 by aisraely          #+#    #+#             */
+/*   Updated: 2021/08/11 18:26:07 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-
-Zombie	*newZombie(std::string name);
-void	randomChump(std::string name);
+#include "Human.hpp"
+#include <iostream>
 
 int	main(void)
 {
-	Zombie	*Avo = newZombie("debil");
-	Zombie	*Hakob = newZombie("durak");
-	Zombie	*Shahen = newZombie("boba");
-
-	randomChump("Gevorg");
-	randomChump("Vlad");
+	Human	bob;
 	
-	delete Shahen;
-	delete Hakob;
-	delete Avo;
+	std::cout << bob.identify() << std::endl;
+	std::cout << bob.getBrain().identify() << std::endl;
 }

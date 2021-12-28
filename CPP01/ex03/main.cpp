@@ -3,18 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aisraely <aisraely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 18:25:50 by aisraely          #+#    #+#             */
-/*   Updated: 2021/10/31 16:01:51 by aisraely         ###   ########.fr       */
+/*   Created: 2021/08/11 18:26:19 by aisraely          #+#    #+#             */
+/*   Updated: 2021/08/11 18:26:20 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-#include "ZombieHorde.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
 int	main(void)
 {
-	srand(time(0));
-	ZombieHorde	horde(5);
+	{
+		Weapon club = Weapon("crude spiked club");
+		HumanA bob("Bob", club);
+		bob.attack();
+		club.setType("some other type of club");
+		bob.attack();
+	}
+	{
+		Weapon club = Weapon("crude spiked club");
+		HumanB jim("Jim");
+		jim.setWeapon(&club);
+		jim.attack();
+		club.setType("some other type of club");
+		jim.attack();
+	}
 }

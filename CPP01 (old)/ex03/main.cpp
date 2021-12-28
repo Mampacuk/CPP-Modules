@@ -5,26 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 18:25:33 by aisraely          #+#    #+#             */
-/*   Updated: 2021/11/03 19:59:45 by aisraely         ###   ########.fr       */
+/*   Created: 2021/08/11 18:25:50 by aisraely          #+#    #+#             */
+/*   Updated: 2021/10/31 16:01:51 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
-
-Zombie	*newZombie(std::string name);
-void	randomChump(std::string name);
+#include "ZombieHorde.hpp"
 
 int	main(void)
 {
-	Zombie	*Avo = newZombie("debil");
-	Zombie	*Hakob = newZombie("durak");
-	Zombie	*Shahen = newZombie("boba");
-
-	randomChump("Gevorg");
-	randomChump("Vlad");
-	
-	delete Shahen;
-	delete Hakob;
-	delete Avo;
+	srand(time(0));
+	ZombieHorde	horde(5);
 }
