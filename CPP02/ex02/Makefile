@@ -17,7 +17,7 @@ B_SRCS	= Fixed.cpp tester.cpp
 OBJS	= ${SRCS:.cpp=.o}
 B_OBJS	= ${B_SRCS:.cpp=.o}
 CC		= c++
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -std=c++98
 RM		= rm -rf
 
 all: ${NAME}

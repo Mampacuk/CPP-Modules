@@ -15,7 +15,7 @@ NAME	= job_of_my_dreams
 SRCS	= Account.cpp tests.cpp
 OBJS	= ${SRCS:.cpp=.o}
 CC		= c++
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -std=c++98
 RM		= rm -rf
 
 all: ${NAME}

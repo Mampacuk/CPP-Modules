@@ -15,7 +15,7 @@ NAME	= myphonebook
 SRCS	= Contact.cpp PhoneBook.cpp main.cpp
 OBJS	= ${SRCS:.cpp=.o}
 CC		= c++
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -std=c++98
 RM		= rm -rf
 
 all: ${NAME}

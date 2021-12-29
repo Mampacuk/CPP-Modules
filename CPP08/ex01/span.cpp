@@ -12,7 +12,10 @@
 
 #include "span.hpp"
 
-Span::Span() : Span(0) {}
+Span::Span() 
+{
+	this->_span.reserve(0);
+}
 
 Span::Span(unsigned int n)
 {
@@ -21,8 +24,9 @@ Span::Span(unsigned int n)
 
 Span::~Span() {}
 
-Span::Span(const Span &copy) : Span(copy._span.capacity())
+Span::Span(const Span &copy)
 {
+	this->_span.reserve(copy._span.capacity());
 	this->_span = copy._span;
 }
 
