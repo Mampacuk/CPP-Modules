@@ -6,7 +6,7 @@
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 18:25:33 by aisraely          #+#    #+#             */
-/*   Updated: 2021/11/03 19:59:45 by aisraely         ###   ########.fr       */
+/*   Updated: 2022/02/24 19:44:50 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,18 @@ void	randomChump(std::string name);
 
 int	main(void)
 {
-	Zombie	*Avo = newZombie("debil");
-	Zombie	*Hakob = newZombie("durak");
-	Zombie	*Shahen = newZombie("boba");
+	Zombie	*Avo = newZombie("Avo");
+	Zombie	*Jacob = newZombie("Jacob");
+	Zombie	*Shahen = newZombie("Shahen");
+
+	Avo->announce();
+	Jacob->announce();
+	Shahen->announce();
 
 	randomChump("Gevorg");
 	randomChump("Vlad");
 	
 	delete Shahen;
-	delete Hakob;
+	delete Jacob;
 	delete Avo;
 }

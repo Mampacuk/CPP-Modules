@@ -6,7 +6,7 @@
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 18:25:45 by aisraely          #+#    #+#             */
-/*   Updated: 2021/11/03 20:00:44 by aisraely         ###   ########.fr       */
+/*   Updated: 2022/02/24 19:06:40 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class	Zombie
 		Zombie(const std::string &_name);
 		~Zombie(void);
 	private:
-		const std::string	&_name;
+		std::string	_name;
 };
 
 #endif
