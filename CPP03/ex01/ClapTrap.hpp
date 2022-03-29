@@ -6,7 +6,7 @@
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 18:53:33 by aisraely          #+#    #+#             */
-/*   Updated: 2021/11/01 19:38:16 by aisraely         ###   ########.fr       */
+/*   Updated: 2022/03/29 18:14:13 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 class	ClapTrap
 {
 	protected:
-		const std::string	&_name;
-		unsigned int		_hp;
-		unsigned int		_energy;
-		unsigned int		_damage;
+		std::string		_name;
+		unsigned int	_hp;
+		unsigned int	_energy;
+		unsigned int	_damage;
 		ClapTrap(void);
 	public:
 		ClapTrap(const std::string &_name);
