@@ -6,7 +6,7 @@
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 10:22:09 by aisraely          #+#    #+#             */
-/*   Updated: 2022/04/02 21:23:51 by aisraely         ###   ########.fr       */
+/*   Updated: 2022/04/02 21:33:33 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ static bool	ft_parse_double(std::string &line)
 	double		value;
 	const char	*ptr = line.c_str();
 
+	errno = 0;
 	value = std::strtod(ptr, NULL);
 	if (!ft_detect_pseudo<char, double>(value) && !ft_detect_overflow<char, double>(value))
 		std::cout << "char: " << (isprint(static_cast<char>(value)) ? (std::string("\'") + static_cast<char>(value) + "\'") : "Non displayable") << std::endl;
