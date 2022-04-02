@@ -6,7 +6,7 @@
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 12:02:03 by aisraely          #+#    #+#             */
-/*   Updated: 2021/12/19 12:02:03 by aisraely         ###   ########.fr       */
+/*   Updated: 2022/04/02 17:27:31 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	Bureaucrat::signForm(Form &form) const
 		form.beSigned(*this);
 		std::cout << this->_name << " succeeded in signing `" << form.getName() << "`" << std::endl;
 	}
-	catch(const std::exception &e)
+	catch (const std::exception &e)
 	{
 		std::cout << this->_name << " failed to sign `" << form.getName()
 			<< "` because his/her grade is too low" << std::endl;

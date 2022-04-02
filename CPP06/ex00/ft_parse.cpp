@@ -6,7 +6,7 @@
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 10:22:09 by aisraely          #+#    #+#             */
-/*   Updated: 2021/12/20 10:22:09 by aisraely         ###   ########.fr       */
+/*   Updated: 2022/04/02 21:23:51 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <cstdlib>
 #include <math.h>
 #include <iomanip>
+#include <errno.h>
 
 static bool	ft_parse_char(std::string &line)
 {
@@ -58,7 +59,7 @@ template <typename T, typename V>
 static bool	ft_detect_overflow(V value)
 {
 	if (!isnan(value) && !isinf(value))
-		if (!(value > std::numeric_limits<T>::min() && value < std::numeric_limits<T>::max()))
+		if (!(value >= std::numeric_limits<T>::min() && value <= std::numeric_limits<T>::max()))
 		{
 			std::cout << ft_deduce_type<T>() << ": impossible" << std::endl;
 			return (true);
@@ -68,13 +69,14 @@ static bool	ft_detect_overflow(V value)
 
 static bool	ft_parse_int(std::string &line)
 {
-	std::stringstream	s(line);
-	int					value;
+	long long	value;
+	const char	*ptr = line.c_str();
 
-	s >> value;
-	if (!ft_detect_overflow<char, int>(value))
+	value = strtol(ptr, NULL, 10);
+	if (!ft_detect_overflow<char, long long>(value))
 		std::cout << "char: " << (isprint(static_cast<char>(value)) ? (std::string("\'") + static_cast<char>(value) + "\'") : "Non displayable") << std::endl;
-	std::cout << "int: " << value << std::endl;
+	if (!ft_detect_overflow<int, long long>(value))
+		std::cout << "int: " << value << std::endl;
 	std::cout << "float: " << static_cast<float>(value) << 'f' << std::endl;
 	std::cout << "double: " << static_cast<double>(value) << std::endl;
 	return (true);
@@ -82,15 +84,16 @@ static bool	ft_parse_int(std::string &line)
 
 static bool	ft_parse_float(std::string &line)
 {
-	float		value;
+	double		value;
 	const char	*ptr = line.c_str();
 
-	value = std::strtof(ptr, NULL);
-	if (!ft_detect_pseudo<char, float>(value) && !ft_detect_overflow<char, float>(value))
+	value = strtod(ptr, NULL);
+	if (!ft_detect_pseudo<char, double>(value) && !ft_detect_overflow<char, float>(value))
 		std::cout << "char: " << (isprint(static_cast<char>(value)) ? (std::string("\'") + static_cast<char>(value) + "\'") : "Non displayable") << std::endl;
-	if (!ft_detect_pseudo<int, float>(value) && !ft_detect_overflow<int, float>(value))
+	if (!ft_detect_pseudo<int, double>(value) && !ft_detect_overflow<int, float>(value))
 		std::cout << "int: " << static_cast<int>(value) << std::endl;
-	std::cout << "float: " << value << 'f' << std::endl;
+	if (!ft_detect_pseudo<float, double>(value) && !ft_detect_overflow<int, float>(value))
+		std::cout << "float: " << value << 'f' << std::endl;
 	std::cout << "double: " << static_cast<double>(value) << std::endl;
 	return (true);
 }
@@ -107,7 +110,10 @@ static bool	ft_parse_double(std::string &line)
 		std::cout << "int: " << static_cast<int>(value) << std::endl;
 	if (!ft_detect_overflow<float, double>(value))
 		std::cout << "float: " << static_cast<float>(value) << 'f' << std::endl;
-	std::cout << "double: " << value << std::endl;
+	if (errno == ERANGE)
+		std::cout << "double: impossible" << std::endl;
+	else
+		std::cout << "double: " << value << std::endl;
 	return (true);
 }
 

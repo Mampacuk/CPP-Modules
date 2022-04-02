@@ -6,7 +6,7 @@
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 19:09:31 by aisraely          #+#    #+#             */
-/*   Updated: 2021/12/19 19:09:31 by aisraely         ###   ########.fr       */
+/*   Updated: 2022/04/02 17:34:08 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ Form	*Intern::makeShrubberyCreation(const std::string &target) const
 {
 	return (new ShrubberyCreationForm(target));
 }
-
 
 Form	*Intern::makeForm(const std::string &name, const std::string &target) const
 {

@@ -6,7 +6,7 @@
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 22:36:57 by aisraely          #+#    #+#             */
-/*   Updated: 2021/12/19 22:36:57 by aisraely         ###   ########.fr       */
+/*   Updated: 2022/04/02 21:31:58 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,20 @@ void	identify(Base &p)
 {
 	try
 	{
-		dynamic_cast<A&>(p);
+		p = dynamic_cast<A&>(p);
 		std::cout << "A" << std::endl;
 	}
-	catch (const std::exception& e) {}
+	catch (const std::exception &e) {}
 	try
 	{
-		dynamic_cast<B&>(p);
+		p = dynamic_cast<B&>(p);
 		std::cout << "B" << std::endl;
 	}
-	catch (const std::exception& e) {}
+	catch (const std::exception &e) {}
 	try
 	{
-		dynamic_cast<C&>(p);
+		p = dynamic_cast<C&>(p);
 		std::cout << "C" << std::endl;
 	}
-	catch (const std::exception& e) {}
+	catch (const std::exception &e) {}
 }

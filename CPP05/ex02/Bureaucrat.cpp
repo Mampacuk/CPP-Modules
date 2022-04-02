@@ -6,7 +6,7 @@
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 12:02:03 by aisraely          #+#    #+#             */
-/*   Updated: 2021/12/19 12:02:03 by aisraely         ###   ########.fr       */
+/*   Updated: 2022/04/02 17:33:06 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ void	Bureaucrat::executeForm(const Form &form)
 	{
 		std::cout << this->_name << " failed to execute `" << form.getName() << "`. Reason: " << e.what() << std::endl;
 	}
-	
 }
 
 std::ostream	&operator<<(std::ostream &o, const Bureaucrat &b)
