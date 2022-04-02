@@ -6,7 +6,7 @@
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 10:11:00 by aisraely          #+#    #+#             */
-/*   Updated: 2021/12/18 10:11:00 by aisraely         ###   ########.fr       */
+/*   Updated: 2022/04/02 15:30:08 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ Animal::Animal(const std::string &type)
 	std::cout << "Animal created with arg ctor" << std::endl;
 }
 
-Animal::Animal(const Animal &copy) : Animal(copy.type)
+Animal::Animal(const Animal &copy)
 {
-	std::cout << "Animal created with copy ctor (that calls arg ctor)" << std::endl;
+	this->type = copy.type;
+	std::cout << "Animal created with copy ctor" << std::endl;
 }
 
 Animal	&Animal::operator=(const Animal &rhs)

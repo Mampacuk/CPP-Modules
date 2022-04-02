@@ -6,7 +6,7 @@
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 10:23:11 by aisraely          #+#    #+#             */
-/*   Updated: 2021/12/18 10:23:11 by aisraely         ###   ########.fr       */
+/*   Updated: 2022/04/02 15:49:38 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ class	Cat : public Animal
 	public:
 		Cat();
 		~Cat();
-		Cat(const Cat&);
-		using Animal::operator=;
+		Cat(const Cat &copy);
+		Cat	&operator=(const Cat &rhs);
 		void	makeSound() const;
 	private:
 		Brain	*_brain;
