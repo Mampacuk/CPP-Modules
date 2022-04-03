@@ -33,7 +33,7 @@ class	Array
 };
 
 template <typename T>
-Array<T>::Array() : _ptr(nullptr), _n(0) {}
+Array<T>::Array() : _ptr(NULL), _n(0) {}
 
 template <typename T>
 Array<T>::Array(unsigned int n) : _ptr(new T[n]), _n(n) {}

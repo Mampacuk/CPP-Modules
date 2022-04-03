@@ -13,6 +13,7 @@
 #include <string>
 #include <cstring>
 #include <cctype>
+#include <typeinfo>
 #include <sstream>
 #include <iostream>
 #include <limits>
@@ -88,11 +89,11 @@ static bool	ft_parse_float(std::string &line)
 	const char	*ptr = line.c_str();
 
 	value = strtod(ptr, NULL);
-	if (!ft_detect_pseudo<char, double>(value) && !ft_detect_overflow<char, float>(value))
+	if (!ft_detect_pseudo<char, double>(value) && !ft_detect_overflow<char, double>(value))
 		std::cout << "char: " << (isprint(static_cast<char>(value)) ? (std::string("\'") + static_cast<char>(value) + "\'") : "Non displayable") << std::endl;
-	if (!ft_detect_pseudo<int, double>(value) && !ft_detect_overflow<int, float>(value))
+	if (!ft_detect_pseudo<int, double>(value) && !ft_detect_overflow<int, double>(value))
 		std::cout << "int: " << static_cast<int>(value) << std::endl;
-	if (!ft_detect_pseudo<float, double>(value) && !ft_detect_overflow<int, float>(value))
+	if (!ft_detect_overflow<float, double>(value))
 		std::cout << "float: " << value << 'f' << std::endl;
 	std::cout << "double: " << static_cast<double>(value) << std::endl;
 	return (true);
