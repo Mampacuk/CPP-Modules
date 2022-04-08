@@ -6,7 +6,7 @@
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 17:33:30 by aisraely          #+#    #+#             */
-/*   Updated: 2021/12/27 17:33:30 by aisraely         ###   ########.fr       */
+/*   Updated: 2022/04/08 16:07:13 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ Array<T>::~Array()
 }
 
 template <typename T>
-Array<T>::Array(const Array &copy) : Array(copy._n)
+Array<T>::Array(const Array &copy) :  _ptr(new T[copy._n]), _n(copy._n)
 {
 	for (size_t i = 0; i < copy._n; i++)
 		this->_ptr[i] = copy._ptr[i];
