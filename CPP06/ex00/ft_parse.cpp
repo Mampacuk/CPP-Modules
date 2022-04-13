@@ -56,15 +56,28 @@ static bool	ft_detect_pseudo(V value)
 	return (false);
 }
 
+template <typename F>
+static bool	ft_floating_equals(F a, F b)
+{
+	return (std::abs(a-b) <= std::numeric_limits<F>::epsilon());
+}
+
 template <typename T, typename V>
 static bool	ft_detect_overflow(V value)
 {
 	if (!isnan(value) && !isinf(value))
-		if (!(value >= std::numeric_limits<T>::min() && value <= std::numeric_limits<T>::max()))
+	{
+		bool	overflow = false;
+		if (std::string(ft_deduce_type<T>()) == "float" || std::string(ft_deduce_type<T>()) == "double")
+			overflow = !((ft_floating_equals<V>(value, std::numeric_limits<T>::min()) || value > std::numeric_limits<T>::min()) && (ft_floating_equals<V>(value, std::numeric_limits<T>::max()) || value < std::numeric_limits<T>::max()));
+		else
+			overflow = !(value >= std::numeric_limits<T>::min() && value <= std::numeric_limits<T>::max());
+		if (overflow)
 		{
 			std::cout << ft_deduce_type<T>() << ": impossible" << std::endl;
 			return (true);
 		}
+	}
 	return (false);
 }
 
@@ -73,10 +86,13 @@ static bool	ft_parse_int(std::string &line)
 	long long	value;
 	const char	*ptr = line.c_str();
 
+	errno = 0;
 	value = strtol(ptr, NULL, 10);
 	if (!ft_detect_overflow<char, long long>(value))
 		std::cout << "char: " << (isprint(static_cast<char>(value)) ? (std::string("\'") + static_cast<char>(value) + "\'") : "Non displayable") << std::endl;
-	if (!ft_detect_overflow<int, long long>(value))
+	if (errno == ERANGE)
+		std::cout << "int: impossible" << std::endl;
+	else if (!ft_detect_overflow<int, long long>(value))
 		std::cout << "int: " << value << std::endl;
 	std::cout << "float: " << static_cast<float>(value) << 'f' << std::endl;
 	std::cout << "double: " << static_cast<double>(value) << std::endl;
