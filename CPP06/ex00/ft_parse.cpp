@@ -56,28 +56,26 @@ static bool	ft_detect_pseudo(V value)
 	return (false);
 }
 
-template <typename F>
-static bool	ft_floating_equals(F a, F b)
+template <class Target, class Source>
+bool narrow_cast(Source v)
 {
-	return (std::abs(a-b) <= std::numeric_limits<F>::epsilon());
+	Target	r = static_cast<Target>(v);
+	if (static_cast<Source>(r) != v)
+		return (true);
+	return (false);
 }
 
 template <typename T, typename V>
-static bool	ft_detect_overflow(V value)
+static bool	ft_detect_overflow(V value, bool erange)
 {
+	if (erange)
+		return (true);
 	if (!isnan(value) && !isinf(value))
-	{
-		bool	overflow = false;
-		if (std::string(ft_deduce_type<T>()) == "float" || std::string(ft_deduce_type<T>()) == "double")
-			overflow = !((ft_floating_equals<V>(value, std::numeric_limits<T>::min()) || value > std::numeric_limits<T>::min()) && (ft_floating_equals<V>(value, std::numeric_limits<T>::max()) || value < std::numeric_limits<T>::max()));
-		else
-			overflow = !(value >= std::numeric_limits<T>::min() && value <= std::numeric_limits<T>::max());
-		if (overflow)
+		if (narrow_cast<T, V>(value))
 		{
 			std::cout << ft_deduce_type<T>() << ": impossible" << std::endl;
 			return (true);
 		}
-	}
 	return (false);
 }
 
@@ -88,11 +86,9 @@ static bool	ft_parse_int(std::string &line)
 
 	errno = 0;
 	value = strtol(ptr, NULL, 10);
-	if (!ft_detect_overflow<char, long long>(value))
+	if (!ft_detect_overflow<char, long long>(value, errno == ERANGE))
 		std::cout << "char: " << (isprint(static_cast<char>(value)) ? (std::string("\'") + static_cast<char>(value) + "\'") : "Non displayable") << std::endl;
-	if (errno == ERANGE)
-		std::cout << "int: impossible" << std::endl;
-	else if (!ft_detect_overflow<int, long long>(value))
+	if (!ft_detect_overflow<int, long long>(value, errno == ERANGE))
 		std::cout << "int: " << value << std::endl;
 	std::cout << "float: " << static_cast<float>(value) << 'f' << std::endl;
 	std::cout << "double: " << static_cast<double>(value) << std::endl;
@@ -104,12 +100,13 @@ static bool	ft_parse_float(std::string &line)
 	double		value;
 	const char	*ptr = line.c_str();
 
+	errno = 0;
 	value = strtod(ptr, NULL);
-	if (!ft_detect_pseudo<char, double>(value) && !ft_detect_overflow<char, double>(value))
+	if (!ft_detect_pseudo<char, double>(value) && !ft_detect_overflow<char, double>(value, errno == ERANGE))
 		std::cout << "char: " << (isprint(static_cast<char>(value)) ? (std::string("\'") + static_cast<char>(value) + "\'") : "Non displayable") << std::endl;
-	if (!ft_detect_pseudo<int, double>(value) && !ft_detect_overflow<int, double>(value))
+	if (!ft_detect_pseudo<int, double>(value) && !ft_detect_overflow<int, double>(value, errno == ERANGE))
 		std::cout << "int: " << static_cast<int>(value) << std::endl;
-	if (!ft_detect_overflow<float, double>(value))
+	if (!ft_detect_overflow<float, double>(value, errno == ERANGE))
 		std::cout << "float: " << value << 'f' << std::endl;
 	std::cout << "double: " << static_cast<double>(value) << std::endl;
 	return (true);
@@ -122,15 +119,13 @@ static bool	ft_parse_double(std::string &line)
 
 	errno = 0;
 	value = std::strtod(ptr, NULL);
-	if (!ft_detect_pseudo<char, double>(value) && !ft_detect_overflow<char, double>(value))
+	if (!ft_detect_pseudo<char, double>(value) && !ft_detect_overflow<char, double>(value, errno == ERANGE))
 		std::cout << "char: " << (isprint(static_cast<char>(value)) ? (std::string("\'") + static_cast<char>(value) + "\'") : "Non displayable") << std::endl;
-	if (!ft_detect_pseudo<int, double>(value) && !ft_detect_overflow<int, double>(value))
+	if (!ft_detect_pseudo<int, double>(value) && !ft_detect_overflow<int, double>(value, errno == ERANGE))
 		std::cout << "int: " << static_cast<int>(value) << std::endl;
-	if (!ft_detect_overflow<float, double>(value))
+	if (!ft_detect_overflow<float, double>(value, errno == ERANGE))
 		std::cout << "float: " << static_cast<float>(value) << 'f' << std::endl;
-	if (errno == ERANGE)
-		std::cout << "double: impossible" << std::endl;
-	else
+	if (!ft_detect_overflow<double, double>(value, errno == ERANGE))
 		std::cout << "double: " << value << std::endl;
 	return (true);
 }
@@ -169,8 +164,6 @@ static std::string	ft_remove_scientific_notation(std::string line)
 	// is e+ unique and e- absent? is e- uniquee and e+ absent?
 	const char	*key = ft_strisunique(line, "e+") && line.find("e-") == std::string::npos ?
 		"e+" : (ft_strisunique(line, "e-") && line.find("e+") == std::string::npos ? "e-" : NULL);
-	// std::cout << std::boolalpha << "ft_strisunique(line, e+)? " << ft_strisunique(line, "e+") << " line.find(e-) == std::string::npos? " << (line.find("e-") == std::string::npos) << " ft_strisunique(line, e-)? " << ft_strisunique(line, "e-") << "line.find(e+) == std::string::npos?" << (line.find("e+") == std::string::npos) << std::endl;
-	// std::cout << "the key is " << key << std::endl;
 	if (key)
 	{
 		// e+/- is at the end, wrong notation
@@ -204,7 +197,7 @@ bool	ft_identify(std::string line)
 	if (line.length() > 2 && ft_strisunique(line, ".") && line.find('.') != line.length() - 1)
 	{
 		// discard the minus if present and check whether the portion before dot purely consists of digits
-		if (!ft_isdigitstr((line[0] == '-' ? line.substr(1) : line).substr(0, line.find('.'))))
+		if (!ft_isdigitstr((line[0] == '-' ? line.substr(1) : line).substr(0, line.find('.') - (line[0] == '-'))))
 			return (false);
 		// if there's 'f' at the end we're dealing with float
 		if (*line.rbegin() == 'f')
