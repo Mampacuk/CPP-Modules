@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   span.cpp                                           :+:      :+:    :+:   */
+/*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 16:17:03 by aisraely          #+#    #+#             */
-/*   Updated: 2022/04/08 16:18:14 by aisraely         ###   ########.fr       */
+/*   Updated: 2022/04/14 16:53:00 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,11 @@ int	Span::shortestSpan() const
 {
 	if (this->_span.size() < 2)
 		throw std::logic_error("a span should be calculated with at least 2 numbers in the set");
-	return (this->_span[1] - this->_span[0]);
+	int	min = this->_span[1] - this->_span[0];
+	for (size_t i = 2; i < this->_span.size(); i++)
+		if (min > this->_span[i] - this->_span[i - 1])
+			min = this->_span[i] - this->_span[i - 1];
+	return (min);
 }
 
 int	Span::longestSpan() const

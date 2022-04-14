@@ -6,7 +6,7 @@
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 13:56:24 by aisraely          #+#    #+#             */
-/*   Updated: 2022/04/08 16:21:34 by aisraely         ###   ########.fr       */
+/*   Updated: 2022/04/14 17:15:35 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main()
 
 	Span sp = Span(5);
 
-	sp.addNumber(5);
+	sp.addNumber(6);
 	sp.addNumber(3);
 	sp.addNumber(17);
 	sp.addNumber(9);
