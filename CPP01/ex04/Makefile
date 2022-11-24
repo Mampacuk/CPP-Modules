@@ -10,25 +10,25 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= replace
+NAME		= replace
 
-SRCS	= ${wildcard *.cpp}
-OBJS	= ${SRCS:.cpp=.o}
-CC		= c++
-CFLAGS	= -Wall -Wextra -Werror -std=c++98
-RM		= rm -rf
+SRCS		= $(wildcard *.cpp)
+OBJS		= $(SRCS:.cpp=.o)
+CXX			= c++
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
+RM			= rm -rf
 
-all: ${NAME}
+all: $(NAME)
 
-${NAME}: ${OBJS}
-	@${CC} ${OBJS} ${CFLAGS}  -o ${NAME}
+$(NAME): $(OBJS)
+	@${CXX} $(OBJS) ${CXXFLAGS}  -o $(NAME)
 
 clean:
-	@${RM} ${OBJS}
-	@${RM} ${wildcard *.replace}
+	@$(RM) $(OBJS)
+	@$(RM) ${wildcard *.replace}
 
 fclean: clean
-	@${RM} ${NAME}
+	@$(RM) $(NAME)
 
 re: fclean all
 

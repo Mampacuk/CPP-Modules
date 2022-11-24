@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int	main(void)
 {
@@ -49,7 +49,7 @@ int	main(void)
 	{
 		Form	form3("Make Disenchatment mandatory to watch for all Netflix users", 10, 0);
 	}
-	catch(const std::exception& e)
+	catch(const std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
@@ -57,7 +57,7 @@ int	main(void)
 	{
 		Form	form4("Legalize same-sex marriage worldwide", 200, 15);
 	}
-	catch(const std::exception& e)
+	catch(const std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
 	}

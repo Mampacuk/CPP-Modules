@@ -31,3 +31,8 @@ void	Cat::makeSound() const
 {
 	std::cout << "* meow! cat noises *" << std::endl;
 }
+
+Cat	&Cat::operator=(const Cat&)
+{
+	return (*this);
+}

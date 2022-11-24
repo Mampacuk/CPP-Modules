@@ -10,34 +10,34 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= fixed
+NAME		= fixed
 
 SRCS	= Fixed.cpp main.cpp
 B_SRCS	= Fixed.cpp tester.cpp
-OBJS	= ${SRCS:.cpp=.o}
+OBJS		= $(SRCS:.cpp=.o)
 B_OBJS	= ${B_SRCS:.cpp=.o}
-CC		= c++
-CFLAGS	= -Wall -Wextra -Werror -std=c++98
-RM		= rm -rf
+CXX			= c++
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
+RM			= rm -rf
 
-all: ${NAME}
+all: $(NAME)
 
 .cpp.o:
-	@$(CC) $(CFLAGS) -c $< -o $(<:.cpp=.o)
+	@$(CXX) $(CXXFLAGS) -c $< -o $(<:.cpp=.o)
 
-${NAME}: ${OBJS}
-	@${CC} ${OBJS} ${CFLAGS} -o ${NAME}
+$(NAME): $(OBJS)
+	@${CXX} $(OBJS) ${CXXFLAGS} -o $(NAME)
 
 clean:
-	@${RM} ${OBJS}
-	@${RM} ${B_OBJS}
+	@$(RM) $(OBJS)
+	@$(RM) ${B_OBJS}
 
 fclean: clean
-	@${RM} ${NAME}
+	@$(RM) $(NAME)
 
 re: fclean all
 
 test: ${B_OBJS}
-	@${CC} ${B_OBJS} ${CFLAGS} -o ${NAME}
+	@${CXX} ${B_OBJS} ${CXXFLAGS} -o $(NAME)
 
 .PHONY: clean fclean re all
