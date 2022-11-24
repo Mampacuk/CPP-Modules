@@ -26,7 +26,7 @@ all: $(NAME)
 	@$(CXX) $(CXXFLAGS) -c $< -o $(<:.cpp=.o)
 
 $(NAME): $(OBJS)
-	@${CXX} $(OBJS) ${CXXFLAGS} -o $(NAME)
+	@$(CXX) $(OBJS) $(CXXFLAGS) -o $(NAME)
 
 clean:
 	@$(RM) $(OBJS)
@@ -38,6 +38,6 @@ fclean: clean
 re: fclean all
 
 test: ${B_OBJS}
-	@${CXX} ${B_OBJS} ${CXXFLAGS} -o $(NAME)
+	@$(CXX) ${B_OBJS} $(CXXFLAGS) -o $(NAME)
 
 .PHONY: clean fclean re all

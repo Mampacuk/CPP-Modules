@@ -21,7 +21,7 @@ RM			= rm -rf
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@${CXX} $(OBJS) ${CXXFLAGS}  -o $(NAME)
+	@$(CXX) $(OBJS) $(CXXFLAGS)  -o $(NAME)
 
 clean:
 	@$(RM) $(OBJS)

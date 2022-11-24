@@ -24,7 +24,7 @@ all: $(NAME)
 	@$(CXX) $(CXXFLAGS) -c $< -o $(<:.cpp=.o)
 
 $(NAME): $(OBJS)
-	@${CXX} $(OBJS) ${CXXFLAGS} -o $(NAME)
+	@$(CXX) $(OBJS) $(CXXFLAGS) -o $(NAME)
 
 clean:
 	@$(RM) $(OBJS)
